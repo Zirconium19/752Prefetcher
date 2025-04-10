@@ -1,0 +1,1146 @@
+*************************************************
+   ChampSim Multicore Out-of-Order Simulator
+   Last compiled: Apr  3 2025 20:54:34
+*************************************************
+parsing config file: /home/zir/Pythia/config/pythia.ini
+
+trace_0 /home/zir/ChampSim/ML-DPC/ChampSimTraces/spec17/654.roms-s8.trace.xz
+adding L2C_PREFETCHER: Scooby
+Initialize SHIP state
+warmup_instructions 10000000
+simulation_instructions 50000000
+champsim_seed 171
+measure_ipc 0
+measure_ipc_epoch 1000
+measure_dram_bw 1
+measure_dram_bw_epoch 256
+measure_cache_acc 1
+measure_cache_acc_epoch 1024
+l1d_perfect 0
+l2c_perfect 0
+llc_perfect 0
+l1d_semi_perfect 0
+l2c_semi_perfect 0
+llc_semi_perfect 0
+semi_perfect_cache_page_buffer_size 64
+
+num_cpus 1
+cpu_freq 4000
+dram_io_freq 2400
+page_size 4096
+block_size 64
+max_read_per_cycle 8
+max_fill_per_cycle 1
+dram_channels 1
+log2_dram_channels 0
+dram_ranks 1
+dram_banks 8
+dram_rows 65536
+dram_columns 128
+dram_row_size 8
+dram_size 4096
+dram_pages 1048576
+
+fetch_width 6
+decode_width 6
+exec_width 4
+lq_width 2
+sq_width 2
+retire_width 4
+scheduler_size 128
+branch_mispredict_penalty 20
+rob_size 256
+lq_size 72
+sq_size 56
+num_instr_destinations_sparc 4
+num_instr_destinations 2
+num_instr_sources 4
+
+itlb_set 16
+itlb_way 8
+itlb_rq_size 16
+itlb_wq_size 16
+itlb_pq_size 0
+itlb_mshr_size 8
+itlb_latency 1
+
+dtlb_set 16
+dtlb_way 4
+dtlb_rq_size 16
+dtlb_wq_size 16
+dtlb_pq_size 0
+dtlb_mshr_size 8
+dtlb_latency 1
+
+stlb_set 128
+stlb_way 12
+stlb_rq_size 32
+stlb_wq_size 32
+stlb_pq_size 0
+stlb_mshr_size 16
+stlb_latency 8
+
+l1i_size 32
+l1i_set 64
+l1i_way 8
+l1i_rq_size 64
+l1i_wq_size 64
+l1i_pq_size 8
+l1i_mshr_size 8
+l1i_latency 1
+
+l1d_size 32
+l1d_set 64
+l1d_way 8
+l1d_rq_size 64
+l1d_wq_size 64
+l1d_pq_size 8
+l1d_mshr_size 16
+l1d_latency 4
+
+l2c_size 256
+l2c_set 512
+l2c_way 8
+l2c_rq_size 32
+l2c_wq_size 32
+l2c_pq_size 32
+l2c_mshr_size 32
+l2c_latency 10
+
+llc_size 2048
+llc_set 2048
+llc_way 16
+llc_rq_size 32
+llc_wq_size 32
+llc_pq_size 32
+llc_mshr_size 64
+llc_latency 20
+
+dram_channel_width 8
+dram_wq_size 64
+dram_rq_size 64
+tRP 15
+tRCD 15
+tCAS 12.5
+dram_dbus_turn_around_time 30
+dram_write_high_wm 56
+dram_write_low_wm 48
+min_dram_writes_per_switch 16
+dram_mtps 2400
+dram_dbus_return_time 13
+
+scooby_alpha 0.0065088
+scooby_gamma 0.556301
+scooby_epsilon 0.00182284
+scooby_state_num_bits 10
+scooby_max_states 1024
+scooby_seed 200
+scooby_policy EGreedy
+scooby_learning_type SARSA
+scooby_actions 1,3,4,5,10,11,12,22,23,30,32,-1,-3,-6,0,
+scooby_max_actions 15
+scooby_pt_size 256
+scooby_st_size 64
+scooby_max_pcs 5
+scooby_max_offsets 5
+scooby_max_deltas 5
+scooby_reward_none -4
+scooby_reward_incorrect -8
+scooby_reward_correct_untimely 12
+scooby_reward_correct_timely 20
+scooby_brain_zero_init 0
+scooby_enable_reward_all 0
+scooby_enable_track_multiple 0
+scooby_enable_reward_out_of_bounds 1
+scooby_reward_out_of_bounds -12
+scooby_state_type 1
+scooby_state_hash_type 11
+scooby_access_debug 0
+scooby_print_access_debug 0
+scooby_print_access_debug_pc deadbeef
+scooby_print_access_debug_pc_count 0
+scooby_print_trace 0
+scooby_enable_state_action_stats 1
+scooby_enable_reward_tracker_hit 0
+scooby_reward_tracker_hit -2
+scooby_enable_featurewise_engine 1
+scooby_pref_degree 1
+scooby_enable_dyn_degree 1
+scooby_max_to_avg_q_thresholds 0.5,1,2,
+scooby_dyn_degrees 1,2,4,4,
+scooby_multi_deg_select_type 2
+scooby_last_pref_offset_conf_thresholds 1,3,8,
+scooby_dyn_degrees_type2 1,2,4,6,
+scooby_action_tracker_size 2
+scooby_high_bw_thresh 4
+scooby_enable_hbw_reward 1
+scooby_reward_hbw_correct_timely 20
+scooby_reward_hbw_correct_untimely 12
+scooby_reward_hbw_incorrect -14
+scooby_reward_hbw_none -2
+scooby_reward_hbw_out_of_bounds -12
+scooby_reward_hbw_tracker_hit -2
+scooby_last_pref_offset_conf_thresholds_hbw 1,3,8,
+scooby_dyn_degrees_type2_hbw 1,2,4,6,
+
+le_enable_trace 0
+le_trace_interval 0
+le_trace_file_name 
+le_trace_state 0
+le_enable_score_plot 0
+le_plot_file_name 
+le_plot_actions 
+le_enable_action_trace 0
+le_action_trace_interval 0
+le_action_trace_name 
+le_enable_action_plot 0
+
+le_featurewise_active_features PC, PC_Delta
+le_featurewise_num_tilings 3,3,
+le_featurewise_num_tiles 128,128,
+le_featurewise_hash_types 2,2,
+le_featurewise_enable_tiling_offset 1,1,
+le_featurewise_max_q_thresh 0.5
+le_featurewise_enable_action_fallback 1
+le_featurewise_feature_weights 1,1,
+le_featurewise_enable_dynamic_weight 0
+le_featurewise_weight_gradient 0.001
+le_featurewise_disable_adjust_weight_all_features_align 1
+le_featurewise_selective_update 0
+le_featurewise_pooling_type 2
+le_featurewise_enable_dyn_action_fallback 1
+le_featurewise_bw_acc_check_level 1
+le_featurewise_acc_thresh 2
+le_featurewise_enable_trace 0
+le_featurewise_trace_feature_type 0
+le_featurewise_trace_feature 
+le_featurewise_trace_interval 0
+le_featurewise_trace_record_count 0
+le_featurewise_trace_file_name 
+le_featurewise_enable_score_plot 0
+le_featurewise_plot_actions 
+le_featurewise_plot_file_name 
+
+
+Heartbeat CPU  0 instructions:    1000003 cycles:     423286 heartbeat IPC: 2.36248 cumulative IPC: 2.36248 (Simulation time: 0 hr 0 min 1 sec) 
+Heartbeat CPU  0 instructions:    2000001 cycles:     788393 heartbeat IPC: 2.73892 cumulative IPC: 2.53681 (Simulation time: 0 hr 0 min 3 sec) 
+Heartbeat CPU  0 instructions:    3000003 cycles:    1153348 heartbeat IPC: 2.74007 cumulative IPC: 2.60113 (Simulation time: 0 hr 0 min 4 sec) 
+Heartbeat CPU  0 instructions:    4000000 cycles:    1518030 heartbeat IPC: 2.74211 cumulative IPC: 2.63499 (Simulation time: 0 hr 0 min 5 sec) 
+Heartbeat CPU  0 instructions:    5000000 cycles:    1888139 heartbeat IPC: 2.70191 cumulative IPC: 2.64811 (Simulation time: 0 hr 0 min 6 sec) 
+Heartbeat CPU  0 instructions:    6000001 cycles:    2260511 heartbeat IPC: 2.68549 cumulative IPC: 2.65427 (Simulation time: 0 hr 0 min 8 sec) 
+Heartbeat CPU  0 instructions:    7000001 cycles:    2624991 heartbeat IPC: 2.74363 cumulative IPC: 2.66668 (Simulation time: 0 hr 0 min 9 sec) 
+Heartbeat CPU  0 instructions:    8000000 cycles:    3003214 heartbeat IPC: 2.64394 cumulative IPC: 2.66381 (Simulation time: 0 hr 0 min 10 sec) 
+Heartbeat CPU  0 instructions:    9000001 cycles:    3368165 heartbeat IPC: 2.74010 cumulative IPC: 2.67208 (Simulation time: 0 hr 0 min 11 sec) 
+Heartbeat CPU  0 instructions:   10000003 cycles:    3737318 heartbeat IPC: 2.70891 cumulative IPC: 2.67572 (Simulation time: 0 hr 0 min 13 sec) 
+
+Warmup complete CPU  0 instructions:   10000003 cycles:    3737318 (Simulation time: 0 hr 0 min 13 sec) 
+
+Heartbeat CPU  0 instructions:   11000002 cycles:    4680092 heartbeat IPC: 1.06070 cumulative IPC: 1.06070 (Simulation time: 0 hr 0 min 14 sec) 
+Heartbeat CPU  0 instructions:   12000000 cycles:    5622451 heartbeat IPC: 1.06116 cumulative IPC: 1.06093 (Simulation time: 0 hr 0 min 16 sec) 
+Heartbeat CPU  0 instructions:   13000002 cycles:    6564757 heartbeat IPC: 1.06123 cumulative IPC: 1.06103 (Simulation time: 0 hr 0 min 18 sec) 
+Heartbeat CPU  0 instructions:   14000002 cycles:    7509239 heartbeat IPC: 1.05878 cumulative IPC: 1.06047 (Simulation time: 0 hr 0 min 19 sec) 
+Heartbeat CPU  0 instructions:   15000003 cycles:    8451053 heartbeat IPC: 1.06178 cumulative IPC: 1.06073 (Simulation time: 0 hr 0 min 21 sec) 
+Heartbeat CPU  0 instructions:   16000000 cycles:    9552049 heartbeat IPC: 0.90827 cumulative IPC: 1.03186 (Simulation time: 0 hr 0 min 23 sec) 
+Heartbeat CPU  0 instructions:   17000000 cycles:   10863064 heartbeat IPC: 0.76277 cumulative IPC: 0.98235 (Simulation time: 0 hr 0 min 25 sec) 
+Heartbeat CPU  0 instructions:   18000003 cycles:   11891424 heartbeat IPC: 0.97243 cumulative IPC: 0.98110 (Simulation time: 0 hr 0 min 27 sec) 
+Heartbeat CPU  0 instructions:   19000000 cycles:   12832194 heartbeat IPC: 1.06296 cumulative IPC: 0.98957 (Simulation time: 0 hr 0 min 29 sec) 
+Heartbeat CPU  0 instructions:   20000000 cycles:   13773578 heartbeat IPC: 1.06227 cumulative IPC: 0.99639 (Simulation time: 0 hr 0 min 30 sec) 
+Heartbeat CPU  0 instructions:   21000003 cycles:   14714538 heartbeat IPC: 1.06275 cumulative IPC: 1.00208 (Simulation time: 0 hr 0 min 32 sec) 
+Heartbeat CPU  0 instructions:   22000002 cycles:   15655854 heartbeat IPC: 1.06234 cumulative IPC: 1.00683 (Simulation time: 0 hr 0 min 34 sec) 
+Heartbeat CPU  0 instructions:   23000002 cycles:   16596662 heartbeat IPC: 1.06292 cumulative IPC: 1.01094 (Simulation time: 0 hr 0 min 36 sec) 
+Heartbeat CPU  0 instructions:   24000000 cycles:   17538822 heartbeat IPC: 1.06139 cumulative IPC: 1.01438 (Simulation time: 0 hr 0 min 37 sec) 
+Heartbeat CPU  0 instructions:   25000001 cycles:   18479601 heartbeat IPC: 1.06295 cumulative IPC: 1.01748 (Simulation time: 0 hr 0 min 39 sec) 
+Heartbeat CPU  0 instructions:   26000002 cycles:   19450353 heartbeat IPC: 1.03013 cumulative IPC: 1.01826 (Simulation time: 0 hr 0 min 41 sec) 
+Heartbeat CPU  0 instructions:   27000002 cycles:   20602188 heartbeat IPC: 0.86818 cumulative IPC: 1.00801 (Simulation time: 0 hr 0 min 43 sec) 
+Heartbeat CPU  0 instructions:   28000000 cycles:   21543566 heartbeat IPC: 1.06227 cumulative IPC: 1.01088 (Simulation time: 0 hr 0 min 44 sec) 
+Heartbeat CPU  0 instructions:   29000002 cycles:   22484214 heartbeat IPC: 1.06310 cumulative IPC: 1.01350 (Simulation time: 0 hr 0 min 46 sec) 
+Heartbeat CPU  0 instructions:   30000003 cycles:   23425524 heartbeat IPC: 1.06235 cumulative IPC: 1.01584 (Simulation time: 0 hr 0 min 48 sec) 
+Heartbeat CPU  0 instructions:   31000003 cycles:   24366474 heartbeat IPC: 1.06276 cumulative IPC: 1.01798 (Simulation time: 0 hr 0 min 50 sec) 
+Heartbeat CPU  0 instructions:   32000000 cycles:   25307692 heartbeat IPC: 1.06245 cumulative IPC: 1.01992 (Simulation time: 0 hr 0 min 51 sec) 
+Heartbeat CPU  0 instructions:   33000003 cycles:   26249112 heartbeat IPC: 1.06223 cumulative IPC: 1.02169 (Simulation time: 0 hr 0 min 53 sec) 
+Heartbeat CPU  0 instructions:   34000003 cycles:   27189874 heartbeat IPC: 1.06297 cumulative IPC: 1.02334 (Simulation time: 0 hr 0 min 55 sec) 
+Heartbeat CPU  0 instructions:   35000002 cycles:   28130435 heartbeat IPC: 1.06319 cumulative IPC: 1.02488 (Simulation time: 0 hr 0 min 56 sec) 
+Heartbeat CPU  0 instructions:   36000000 cycles:   29364921 heartbeat IPC: 0.81005 cumulative IPC: 1.01453 (Simulation time: 0 hr 0 min 58 sec) 
+Heartbeat CPU  0 instructions:   37000000 cycles:   30656452 heartbeat IPC: 0.77427 cumulative IPC: 1.00300 (Simulation time: 0 hr 1 min 1 sec) 
+Heartbeat CPU  0 instructions:   38000002 cycles:   31614634 heartbeat IPC: 1.04365 cumulative IPC: 1.00440 (Simulation time: 0 hr 1 min 2 sec) 
+Heartbeat CPU  0 instructions:   39000001 cycles:   32555694 heartbeat IPC: 1.06263 cumulative IPC: 1.00630 (Simulation time: 0 hr 1 min 4 sec) 
+Heartbeat CPU  0 instructions:   40000000 cycles:   33497157 heartbeat IPC: 1.06218 cumulative IPC: 1.00807 (Simulation time: 0 hr 1 min 6 sec) 
+Heartbeat CPU  0 instructions:   41000001 cycles:   34438429 heartbeat IPC: 1.06239 cumulative IPC: 1.00974 (Simulation time: 0 hr 1 min 7 sec) 
+Heartbeat CPU  0 instructions:   42000001 cycles:   35379897 heartbeat IPC: 1.06217 cumulative IPC: 1.01130 (Simulation time: 0 hr 1 min 9 sec) 
+Heartbeat CPU  0 instructions:   43000001 cycles:   36320835 heartbeat IPC: 1.06277 cumulative IPC: 1.01278 (Simulation time: 0 hr 1 min 11 sec) 
+Heartbeat CPU  0 instructions:   44000000 cycles:   37262125 heartbeat IPC: 1.06237 cumulative IPC: 1.01417 (Simulation time: 0 hr 1 min 13 sec) 
+Heartbeat CPU  0 instructions:   45000002 cycles:   38203515 heartbeat IPC: 1.06226 cumulative IPC: 1.01549 (Simulation time: 0 hr 1 min 14 sec) 
+Heartbeat CPU  0 instructions:   46000002 cycles:   39247643 heartbeat IPC: 0.95774 cumulative IPC: 1.01379 (Simulation time: 0 hr 1 min 16 sec) 
+Heartbeat CPU  0 instructions:   47000000 cycles:   40558973 heartbeat IPC: 0.76258 cumulative IPC: 1.00484 (Simulation time: 0 hr 1 min 18 sec) 
+Heartbeat CPU  0 instructions:   48000000 cycles:   41872325 heartbeat IPC: 0.76141 cumulative IPC: 0.99646 (Simulation time: 0 hr 1 min 20 sec) 
+Heartbeat CPU  0 instructions:   49000003 cycles:   43190482 heartbeat IPC: 0.75864 cumulative IPC: 0.98851 (Simulation time: 0 hr 1 min 22 sec) 
+Heartbeat CPU  0 instructions:   50000001 cycles:   44509237 heartbeat IPC: 0.75829 cumulative IPC: 0.98107 (Simulation time: 0 hr 1 min 24 sec) 
+Heartbeat CPU  0 instructions:   51000000 cycles:   45535817 heartbeat IPC: 0.97411 cumulative IPC: 0.98090 (Simulation time: 0 hr 1 min 26 sec) 
+Heartbeat CPU  0 instructions:   52000000 cycles:   46477376 heartbeat IPC: 1.06207 cumulative IPC: 0.98268 (Simulation time: 0 hr 1 min 28 sec) 
+Heartbeat CPU  0 instructions:   53000003 cycles:   47418456 heartbeat IPC: 1.06261 cumulative IPC: 0.98441 (Simulation time: 0 hr 1 min 30 sec) 
+Heartbeat CPU  0 instructions:   54000002 cycles:   48359639 heartbeat IPC: 1.06249 cumulative IPC: 0.98605 (Simulation time: 0 hr 1 min 31 sec) 
+Heartbeat CPU  0 instructions:   55000000 cycles:   49300350 heartbeat IPC: 1.06302 cumulative IPC: 0.98764 (Simulation time: 0 hr 1 min 33 sec) 
+Heartbeat CPU  0 instructions:   56000000 cycles:   50241719 heartbeat IPC: 1.06228 cumulative IPC: 0.98915 (Simulation time: 0 hr 1 min 35 sec) 
+Heartbeat CPU  0 instructions:   57000000 cycles:   51182592 heartbeat IPC: 1.06284 cumulative IPC: 0.99061 (Simulation time: 0 hr 1 min 37 sec) 
+Heartbeat CPU  0 instructions:   58000000 cycles:   52123976 heartbeat IPC: 1.06227 cumulative IPC: 0.99201 (Simulation time: 0 hr 1 min 38 sec) 
+Heartbeat CPU  0 instructions:   59000001 cycles:   53095412 heartbeat IPC: 1.02940 cumulative IPC: 0.99274 (Simulation time: 0 hr 1 min 40 sec) 
+Heartbeat CPU  0 instructions:   60000000 cycles:   54413576 heartbeat IPC: 0.75863 cumulative IPC: 0.98666 (Simulation time: 0 hr 1 min 42 sec) 
+Finished CPU 0 instructions: 50000000 cycles: 50676266 cumulative IPC: 0.98666 (Simulation time: 0 hr 1 min 42 sec) 
+
+ChampSim completed all CPUs
+
+[ROI Statistics]
+Core_0_instructions 50000000
+Core_0_cycles 50676266
+Core_0_IPC 0.98666
+
+Core_0_branch_prediction_accuracy 99.57136
+Core_0_branch_MPKI 0.62534
+Core_0_average_ROB_occupancy_at_mispredict 227.80420
+
+Core_0_L1D_total_access 9073721
+Core_0_L1D_total_hit 9062887
+Core_0_L1D_total_miss 10834
+Core_0_L1D_loads 5316848
+Core_0_L1D_load_hit 5310442
+Core_0_L1D_load_miss 6406
+Core_0_L1D_RFOs 3756873
+Core_0_L1D_RFO_hit 3752445
+Core_0_L1D_RFO_miss 4428
+Core_0_L1D_prefetches 0
+Core_0_L1D_prefetch_hit 0
+Core_0_L1D_prefetch_miss 0
+Core_0_L1D_writebacks 0
+Core_0_L1D_writeback_hit 0
+Core_0_L1D_writeback_miss 0
+Core_0_L1D_prefetch_requested 0
+Core_0_L1D_prefetch_dropped 0
+Core_0_L1D_prefetch_issued 0
+Core_0_L1D_prefetch_filled 0
+Core_0_L1D_prefetch_useful 0
+Core_0_L1D_prefetch_useless 0
+Core_0_L1D_prefetch_late 0
+Core_0_L1D_average_miss_latency 58.29232
+
+Core_0_L1D_rq_access 7722868
+Core_0_L1D_rq_forward 0
+Core_0_L1D_rq_merged 2403448
+Core_0_L1D_rq_to_cache 5319420
+Core_0_L1D_rq_full 0
+
+Core_0_L1D_wq_access 3796215
+Core_0_L1D_wq_forward 0
+Core_0_L1D_wq_merged 38990
+Core_0_L1D_wq_to_cache 3757225
+Core_0_L1D_wq_full 0
+
+Core_0_L1D_pq_access 0
+Core_0_L1D_pq_forward 0
+Core_0_L1D_pq_merged 0
+Core_0_L1D_pq_to_cache 0
+Core_0_L1D_pq_full 0
+
+Core_0_L1D_acc_epochs 53114
+Core_0_L1D_acc_level_0 53114
+Core_0_L1D_acc_level_1 0
+Core_0_L1D_acc_level_2 0
+Core_0_L1D_acc_level_3 0
+Core_0_L1D_acc_level_4 0
+Core_0_L1D_acc_level_5 0
+Core_0_L1D_acc_level_6 0
+Core_0_L1D_acc_level_7 0
+Core_0_L1D_acc_level_8 0
+Core_0_L1D_acc_level_9 0
+
+Core_0_L1I_total_access 14189420
+Core_0_L1I_total_hit 14189420
+Core_0_L1I_total_miss 0
+Core_0_L1I_loads 14189420
+Core_0_L1I_load_hit 14189420
+Core_0_L1I_load_miss 0
+Core_0_L1I_RFOs 0
+Core_0_L1I_RFO_hit 0
+Core_0_L1I_RFO_miss 0
+Core_0_L1I_prefetches 0
+Core_0_L1I_prefetch_hit 0
+Core_0_L1I_prefetch_miss 0
+Core_0_L1I_writebacks 0
+Core_0_L1I_writeback_hit 0
+Core_0_L1I_writeback_miss 0
+Core_0_L1I_prefetch_requested 0
+Core_0_L1I_prefetch_dropped 0
+Core_0_L1I_prefetch_issued 0
+Core_0_L1I_prefetch_filled 0
+Core_0_L1I_prefetch_useful 0
+Core_0_L1I_prefetch_useless 0
+Core_0_L1I_prefetch_late 0
+Core_0_L1I_average_miss_latency -nan
+
+Core_0_L1I_rq_access 50000005
+Core_0_L1I_rq_forward 0
+Core_0_L1I_rq_merged 35810585
+Core_0_L1I_rq_to_cache 14189420
+Core_0_L1I_rq_full 0
+
+Core_0_L1I_wq_access 0
+Core_0_L1I_wq_forward 0
+Core_0_L1I_wq_merged 0
+Core_0_L1I_wq_to_cache 0
+Core_0_L1I_wq_full 0
+
+Core_0_L1I_pq_access 0
+Core_0_L1I_pq_forward 0
+Core_0_L1I_pq_merged 0
+Core_0_L1I_pq_to_cache 0
+Core_0_L1I_pq_full 0
+
+Core_0_L1I_acc_epochs 53114
+Core_0_L1I_acc_level_0 53114
+Core_0_L1I_acc_level_1 0
+Core_0_L1I_acc_level_2 0
+Core_0_L1I_acc_level_3 0
+Core_0_L1I_acc_level_4 0
+Core_0_L1I_acc_level_5 0
+Core_0_L1I_acc_level_6 0
+Core_0_L1I_acc_level_7 0
+Core_0_L1I_acc_level_8 0
+Core_0_L1I_acc_level_9 0
+
+Core_0_L2C_total_access 44297
+Core_0_L2C_total_hit 33462
+Core_0_L2C_total_miss 10835
+Core_0_L2C_loads 6406
+Core_0_L2C_load_hit 6114
+Core_0_L2C_load_miss 292
+Core_0_L2C_RFOs 4428
+Core_0_L2C_RFO_hit 214
+Core_0_L2C_RFO_miss 4214
+Core_0_L2C_prefetches 29029
+Core_0_L2C_prefetch_hit 22701
+Core_0_L2C_prefetch_miss 6328
+Core_0_L2C_writebacks 4434
+Core_0_L2C_writeback_hit 4433
+Core_0_L2C_writeback_miss 1
+Core_0_L2C_prefetch_requested 33299
+Core_0_L2C_prefetch_dropped 0
+Core_0_L2C_prefetch_issued 33299
+Core_0_L2C_prefetch_filled 7253
+Core_0_L2C_prefetch_useful 6816
+Core_0_L2C_prefetch_useless 235
+Core_0_L2C_prefetch_late 68
+Core_0_L2C_average_miss_latency 109.36954
+
+Core_0_L2C_rq_access 10834
+Core_0_L2C_rq_forward 0
+Core_0_L2C_rq_merged 0
+Core_0_L2C_rq_to_cache 10834
+Core_0_L2C_rq_full 0
+
+Core_0_L2C_wq_access 4434
+Core_0_L2C_wq_forward 0
+Core_0_L2C_wq_merged 0
+Core_0_L2C_wq_to_cache 4434
+Core_0_L2C_wq_full 0
+
+Core_0_L2C_pq_access 33299
+Core_0_L2C_pq_forward 0
+Core_0_L2C_pq_merged 63
+Core_0_L2C_pq_to_cache 33236
+Core_0_L2C_pq_full 0
+
+Core_0_L2C_acc_epochs 53114
+Core_0_L2C_acc_level_0 42606
+Core_0_L2C_acc_level_1 3298
+Core_0_L2C_acc_level_2 3220
+Core_0_L2C_acc_level_3 121
+Core_0_L2C_acc_level_4 63
+Core_0_L2C_acc_level_5 3147
+Core_0_L2C_acc_level_6 104
+Core_0_L2C_acc_level_7 77
+Core_0_L2C_acc_level_8 81
+Core_0_L2C_acc_level_9 397
+
+Core_0_LLC_total_access 14320
+Core_0_LLC_total_hit 3528
+Core_0_LLC_total_miss 10792
+Core_0_LLC_loads 228
+Core_0_LLC_load_hit 8
+Core_0_LLC_load_miss 220
+Core_0_LLC_RFOs 4214
+Core_0_LLC_RFO_hit 27
+Core_0_LLC_RFO_miss 4187
+Core_0_LLC_prefetches 6392
+Core_0_LLC_prefetch_hit 7
+Core_0_LLC_prefetch_miss 6385
+Core_0_LLC_writebacks 3486
+Core_0_LLC_writeback_hit 3486
+Core_0_LLC_writeback_miss 0
+Core_0_LLC_prefetch_requested 0
+Core_0_LLC_prefetch_dropped 0
+Core_0_LLC_prefetch_issued 0
+Core_0_LLC_prefetch_filled 7314
+Core_0_LLC_prefetch_useful 4
+Core_0_LLC_prefetch_useless 0
+Core_0_LLC_prefetch_late 0
+Core_0_LLC_average_miss_latency 80.27761
+
+Core_0_LLC_rq_access 4442
+Core_0_LLC_rq_forward 0
+Core_0_LLC_rq_merged 0
+Core_0_LLC_rq_to_cache 4442
+Core_0_LLC_rq_full 0
+
+Core_0_LLC_wq_access 3486
+Core_0_LLC_wq_forward 0
+Core_0_LLC_wq_merged 0
+Core_0_LLC_wq_to_cache 3486
+Core_0_LLC_wq_full 0
+
+Core_0_LLC_pq_access 7321
+Core_0_LLC_pq_forward 0
+Core_0_LLC_pq_merged 0
+Core_0_LLC_pq_to_cache 7321
+Core_0_LLC_pq_full 0
+
+Core_0_LLC_acc_epochs 53139
+Core_0_LLC_acc_level_0 53134
+Core_0_LLC_acc_level_1 1
+Core_0_LLC_acc_level_2 1
+Core_0_LLC_acc_level_3 0
+Core_0_LLC_acc_level_4 0
+Core_0_LLC_acc_level_5 1
+Core_0_LLC_acc_level_6 0
+Core_0_LLC_acc_level_7 0
+Core_0_LLC_acc_level_8 0
+Core_0_LLC_acc_level_9 2
+
+Core_0_major_page_fault 0
+Core_0_minor_page_fault 316
+
+scooby_st_lookup 7330
+scooby_st_hit 7080
+scooby_st_evict 186
+scooby_st_insert 250
+scooby_st_streaming 0
+
+scooby_predict_called 7330
+scooby_predict_out_of_bounds 149
+scooby_predict_action_1 7083
+scooby_predict_issue_action_1 7069
+scooby_predict_hit_action_1 14
+scooby_predict_out_of_bounds_action_1 138
+scooby_predict_action_3 38
+scooby_predict_issue_action_3 35
+scooby_predict_hit_action_3 3
+scooby_predict_out_of_bounds_action_3 1
+scooby_predict_action_4 16
+scooby_predict_issue_action_4 12
+scooby_predict_hit_action_4 4
+scooby_predict_out_of_bounds_action_4 1
+scooby_predict_action_5 13
+scooby_predict_issue_action_5 11
+scooby_predict_hit_action_5 2
+scooby_predict_out_of_bounds_action_5 2
+scooby_predict_action_10 7
+scooby_predict_issue_action_10 6
+scooby_predict_hit_action_10 1
+scooby_predict_out_of_bounds_action_10 0
+scooby_predict_action_11 10
+scooby_predict_issue_action_11 7
+scooby_predict_hit_action_11 3
+scooby_predict_out_of_bounds_action_11 0
+scooby_predict_action_12 7
+scooby_predict_issue_action_12 6
+scooby_predict_hit_action_12 1
+scooby_predict_out_of_bounds_action_12 0
+scooby_predict_action_22 1
+scooby_predict_issue_action_22 1
+scooby_predict_hit_action_22 0
+scooby_predict_out_of_bounds_action_22 3
+scooby_predict_action_23 1
+scooby_predict_issue_action_23 1
+scooby_predict_hit_action_23 0
+scooby_predict_out_of_bounds_action_23 2
+scooby_predict_action_30 1
+scooby_predict_issue_action_30 1
+scooby_predict_hit_action_30 0
+scooby_predict_out_of_bounds_action_30 0
+scooby_predict_action_32 3
+scooby_predict_issue_action_32 3
+scooby_predict_hit_action_32 0
+scooby_predict_out_of_bounds_action_32 1
+scooby_predict_action_-1 0
+scooby_predict_issue_action_-1 0
+scooby_predict_hit_action_-1 0
+scooby_predict_out_of_bounds_action_-1 1
+scooby_predict_action_-3 1
+scooby_predict_issue_action_-3 1
+scooby_predict_hit_action_-3 0
+scooby_predict_out_of_bounds_action_-3 0
+scooby_predict_action_-6 0
+scooby_predict_issue_action_-6 0
+scooby_predict_hit_action_-6 0
+scooby_predict_out_of_bounds_action_-6 0
+scooby_predict_action_0 0
+scooby_predict_issue_action_0 0
+scooby_predict_hit_action_0 0
+scooby_predict_out_of_bounds_action_0 0
+scooby_predict_multi_deg_called 6370
+scooby_predict_predicted 33299
+scooby_predict_multi_deg 26146
+scooby_predict_multi_deg_2 6229
+scooby_predict_multi_deg_3 5663
+scooby_predict_multi_deg_4 5519
+scooby_predict_multi_deg_5 4434
+scooby_predict_multi_deg_6 4301
+scooby_predict_multi_deg_7 0
+scooby_predict_multi_deg_8 0
+scooby_predict_multi_deg_9 0
+scooby_predict_multi_deg_10 0
+scooby_predict_multi_deg_11 0
+scooby_predict_multi_deg_12 0
+scooby_predict_multi_deg_13 0
+scooby_predict_multi_deg_14 0
+scooby_predict_multi_deg_15 0
+scooby_predict_multi_deg_16 0
+
+scooby_selected_deg_1 783
+scooby_selected_deg_2 424
+scooby_selected_deg_3 0
+scooby_selected_deg_4 978
+scooby_selected_deg_5 0
+scooby_selected_deg_6 4968
+scooby_selected_deg_7 0
+scooby_selected_deg_8 0
+scooby_selected_deg_9 0
+scooby_selected_deg_10 0
+scooby_selected_deg_11 0
+scooby_selected_deg_12 0
+scooby_selected_deg_13 0
+scooby_selected_deg_14 0
+scooby_selected_deg_15 0
+scooby_selected_deg_16 0
+
+scooby_state_445440|24|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|3|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|35|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|6|1 72,0,0,0,0,0,0,0,0,0,1,0,0,0,0,73,
+scooby_state_445440|9|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|11|1 72,0,0,0,1,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|34|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|12|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|13|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|32|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|29|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|22|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|8|1 72,0,0,0,0,0,0,0,0,0,1,0,0,0,0,73,
+scooby_state_445440|10|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|4|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|14|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|33|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|41|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|15|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|21|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|25|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|19|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|28|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|36|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|38|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|18|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|37|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|39|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|27|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|7|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|2|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|26|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|17|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|31|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|16|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|30|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|5|1 72,0,0,0,0,0,0,0,0,0,1,0,0,0,0,73,
+scooby_state_445440|42|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|20|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|40|1 72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|23|1 73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,
+scooby_state_445440|47|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|58|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|48|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|0|0 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|63|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|56|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|53|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|54|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|59|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|44|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|51|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|55|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|58|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|57|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|43|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|1|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|62|1 71,0,0,1,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|52|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|61|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|59|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|45|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|46|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|49|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|50|1 71,1,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|55|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|56|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|57|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_445440|60|1 72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,
+scooby_state_4453e0|60|1 71,0,0,0,0,0,0,0,0,0,0,0,0,0,0,71,
+scooby_state_4453e0|54|1 70,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,
+scooby_state_4453e0|61|1 68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,68,
+scooby_state_4453e0|53|1 68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,68,
+scooby_state_4453e0|62|1 66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,66,
+scooby_state_4453e0|52|1 64,0,0,0,0,0,0,0,0,0,0,0,1,0,0,65,
+scooby_state_4453e0|63|1 63,0,0,0,0,0,0,0,0,0,0,0,0,0,0,63,
+scooby_state_4453e0|51|1 61,0,0,1,0,0,0,0,0,0,0,0,0,0,0,62,
+scooby_state_4453e0|50|1 60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,60,
+scooby_state_4453e0|0|0 59,0,0,0,0,0,0,0,0,0,0,1,0,0,0,60,
+scooby_state_4453e0|1|1 58,0,0,0,0,0,0,0,0,0,0,0,0,0,0,58,
+scooby_state_4453e0|49|1 57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,
+scooby_state_4453e0|2|1 55,0,0,0,0,0,0,0,0,0,0,0,0,0,0,55,
+scooby_state_4453e0|48|1 54,0,0,0,0,0,0,0,0,0,0,0,0,0,0,54,
+scooby_state_4453e0|47|1 52,0,0,0,0,0,0,0,0,0,0,0,0,0,0,52,
+scooby_state_4453e0|3|1 52,0,0,0,0,0,0,0,0,0,0,0,0,0,0,52,
+scooby_state_4453e0|4|1 50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,
+scooby_state_4453e0|46|1 49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,
+scooby_state_4453e0|5|1 47,0,0,0,0,0,0,0,0,0,0,0,0,0,0,47,
+scooby_state_4453e0|45|1 46,0,0,0,0,0,0,0,0,0,0,0,0,0,0,46,
+scooby_state_4453e0|6|1 44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,
+scooby_state_4453e0|44|1 44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,
+scooby_state_4453e0|7|1 42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42,
+scooby_state_4453e0|43|1 41,0,0,0,0,0,0,0,0,0,0,0,0,0,0,41,
+scooby_state_4453e0|8|1 39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,39,
+scooby_state_4453e0|42|1 38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,
+scooby_state_4453e0|41|1 36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,
+scooby_state_4453e0|9|1 36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,
+scooby_state_4453e0|10|1 34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,
+scooby_state_4453e0|40|1 33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
+scooby_state_4453e0|11|1 31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,
+scooby_state_4453e0|39|1 30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,
+scooby_state_4453e0|12|1 28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,
+scooby_state_4453e0|38|1 28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,
+scooby_state_4453e0|13|1 26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,
+scooby_state_4453e0|37|1 25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,
+scooby_state_4453e0|14|1 23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,
+scooby_state_4453e0|36|1 22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,
+scooby_state_4453e0|15|1 18,0,0,0,0,0,0,0,1,1,0,0,0,0,0,20,
+scooby_state_4453e0|35|1 20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,
+scooby_state_5291cd|46|0 1,2,1,2,2,6,3,1,1,0,0,0,0,0,0,19,
+scooby_state_4453e0|16|1 18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,
+scooby_state_4453e0|34|1 17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,
+scooby_state_4453e0|17|1 15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,
+scooby_state_4453e0|33|1 14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+scooby_state_4453e0|32|1 12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,
+scooby_state_4453e0|18|1 12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,
+scooby_state_53cf6a|42|-3 10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,
+scooby_state_528441|61|5 10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,
+scooby_state_57ceb4|46|0 1,1,2,1,1,1,1,1,1,0,0,0,0,0,0,10,
+scooby_state_5281f3|62|1 9,0,0,0,0,0,0,0,0,0,1,0,0,0,0,10,
+scooby_state_4453e0|19|1 10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,
+scooby_state_4453e0|31|1 9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,
+scooby_state_528401|41|0 2,1,1,1,1,1,1,1,0,0,0,0,0,0,0,9,
+scooby_state_5291e9|56|7 1,2,1,5,0,0,0,0,0,0,0,0,0,0,0,9,
+scooby_state_53ce17|14|0 6,1,1,0,0,0,0,0,0,0,0,0,0,0,0,8,
+scooby_state_528334|49|-13 3,1,1,1,1,1,0,0,0,0,0,0,0,0,0,8,
+scooby_state_53cf63|45|3 0,1,2,1,1,1,1,1,0,0,0,0,0,0,0,8,
+scooby_state_4453e0|20|1 7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,
+scooby_state_400838|2|-1 1,1,5,0,0,0,0,0,0,0,0,0,0,0,0,7,
+scooby_state_4453e0|30|1 6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,
+scooby_state_528a93|61|0 3,1,1,1,0,0,0,0,0,0,0,0,0,0,0,6,
+scooby_state_52831d|3|1 2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,5,
+scooby_state_4453e0|21|1 4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+scooby_state_4453e0|29|1 4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+scooby_state_4453e0|48|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|51|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|46|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|28|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|45|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|52|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|43|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|40|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|37|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|49|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|34|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|31|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|30|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_400838|2|0 0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|42|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|36|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|39|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_4453e0|33|0 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,
+scooby_state_52831d|3|0 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_53cf63|45|0 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_44546a|6|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|41|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|29|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|22|1 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|35|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_445407|6|-2 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|53|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|50|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|44|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|38|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|32|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_528334|49|0 1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|47|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4453e0|54|0 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_445390|14|-6 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44544f|6|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528bc5|47|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5289f8|39|5 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b102|4|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445510|42|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c97b|37|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b770|29|-3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445494|7|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528200|8|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528e08|56|4 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50baab|42|9 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44544f|4|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453ad|45|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453f8|8|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5293e8|15|6 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453a8|18|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453e6|9|9 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453b5|25|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5281c4|7|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5290c0|3|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529375|13|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d0c1|3|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_400795|30|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b8c1|35|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_52958a|22|19 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b883|34|-8 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5283f0|15|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b902|36|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50ba42|41|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528541|21|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5291e9|56|17 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528a93|61|12 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528c80|50|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529385|14|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528581|22|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_57eac1|43|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44546a|7|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528740|29|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445494|6|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44544f|5|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b0c4|62|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445440|1|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528a82|42|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445465|43|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445494|5|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ad44|22|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5288c0|35|24 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac8b|56|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ce17|56|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d171|6|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528730|28|6 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528a50|41|27 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d042|1|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ae47|57|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d001|0|-7 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529060|1|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53af03|60|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50ba39|40|4 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53aece|57|35 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445407|6|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445401|16|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50901a|49|17 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b0f9|3|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528281|10|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ce85|58|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ad83|54|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4006df|27|12 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_40075a|29|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453e0|28|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528880|34|5 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_40080b|32|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_56add2|55|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529104|4|-18 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528242|9|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53addd|55|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4007e1|31|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453e0|27|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac40|49|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528d57|53|11 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53adea|41|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44548b|44|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5291c5|7|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac83|50|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529080|2|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c92c|60|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528b43|45|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac97|51|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_400840|33|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_57ce9e|58|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac30|48|-7 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528acd|43|-11 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528300|12|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_56ae01|56|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528361|32|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c920|36|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50ca04|40|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b840|33|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528df8|55|8 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_56ad10|52|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ce41|57|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ad32|11|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528419|16|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53aebc|23|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d124|4|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528d84|54|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c8c3|35|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_57ce70|57|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ac83|50|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c880|34|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c980|38|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b084|2|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d140|5|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528b17|44|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b002|0|-4 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453c3|15|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4003d0|0|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c800|32|-8 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528440|17|-39 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ae00|56|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ae86|58|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445504|20|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528a01|40|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53acc2|51|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b0d6|39|-10 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_57eab2|42|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5284a8|18|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ad02|52|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528b83|46|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cec0|59|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529201|8|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cf40|61|6 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445486|18|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c841|33|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5295df|23|19 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528180|6|-34 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4453f8|8|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5282db|11|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529156|5|-18 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528340|13|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529240|9|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cf80|62|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53aec5|59|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c9e8|39|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cfc2|63|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cde0|55|-4 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53aff0|63|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_508ff3|63|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53ad41|53|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d172|7|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d082|2|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_56ad41|53|-3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5286e5|27|-8 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53b048|1|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53d1c0|7|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528381|14|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528c41|49|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_529182|6|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4454c3|19|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b800|32|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528cc2|51|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528d01|52|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528c39|48|-7 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_509003|0|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4003d0|15|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50c9b6|49|-11 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528500|20|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b788|30|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44546a|8|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_5284c3|19|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_53cee6|40|33 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_50b7d0|31|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_528401|41|-8 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_44539f|19|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_445465|17|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+
+scooby_action_-3_deg_dist 0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_22_deg_dist 0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_12_deg_dist 0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_-1_deg_dist 0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_11_deg_dist 0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_23_deg_dist 0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_10_deg_dist 0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_32_deg_dist 0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_5_deg_dist 0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_30_deg_dist 0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_4_deg_dist 0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_3_deg_dist 0,22,2,0,5,0,10,0,0,0,0,0,0,0,0,0,
+scooby_action_1_deg_dist 0,718,425,0,978,0,5100,0,0,0,0,0,0,0,0,0,
+
+scooby_track_called 7330
+scooby_track_same_address 28
+scooby_track_evict 7046
+
+scooby_reward_demand_called 7330
+scooby_reward_demand_pt_not_found 406
+scooby_reward_demand_pt_found 6924
+scooby_reward_demand_pt_found_total 6924
+scooby_reward_demand_has_reward 1
+scooby_reward_train_called 225
+scooby_reward_assign_reward_called 7297
+scooby_reward_no_pref 0
+scooby_reward_incorrect 225
+scooby_reward_correct_untimely 6089
+scooby_reward_correct_timely 834
+scooby_reward_out_of_bounds 149
+scooby_reward_tracker_hit 0
+
+scooby_reward_none_low_bw 0
+scooby_reward_none_high_bw 0
+scooby_reward_incorrect_low_bw 225
+scooby_reward_incorrect_high_bw 0
+scooby_reward_correct_untimely_low_bw 6089
+scooby_reward_correct_untimely_high_bw 0
+scooby_reward_correct_timely_low_bw 834
+scooby_reward_correct_timely_high_bw 0
+scooby_reward_out_of_bounds_low_bw 149
+scooby_reward_out_of_bounds_high_bw 0
+scooby_reward_tracker_hit_low_bw 0
+scooby_reward_tracker_hit_high_bw 0
+
+scooby_reward_1 0,174,6067,824,138,0,
+scooby_reward_3 0,13,18,4,1,0,
+scooby_reward_4 0,12,0,0,1,0,
+scooby_reward_5 0,6,4,1,2,0,
+scooby_reward_10 0,5,0,1,0,0,
+scooby_reward_11 0,7,0,0,0,0,
+scooby_reward_12 0,5,0,1,0,0,
+scooby_reward_22 0,1,0,0,3,0,
+scooby_reward_23 0,0,0,0,2,0,
+scooby_reward_30 0,1,0,0,0,0,
+scooby_reward_32 0,0,0,3,1,0,
+scooby_reward_-1 0,0,0,0,1,0,
+scooby_reward_-3 0,1,0,0,0,0,
+scooby_reward_-6 0,0,0,0,0,0,
+scooby_reward_0 0,0,0,0,0,0,
+
+scooby_train_called 7045
+scooby_train_compute_reward 225
+
+scooby_register_fill_called 7253
+scooby_register_fill_set 935
+scooby_register_fill_set_total 935
+
+scooby_register_prefetch_hit_called 25773
+scooby_register_prefetch_hit_set 6223
+scooby_register_prefetch_hit_set_total 6223
+
+scooby_pref_issue_scooby 33299
+
+learning_engine_featurewise.action.called 7330
+learning_engine_featurewise.action.explore 14
+learning_engine_featurewise.action.exploit 7316
+learning_engine_featurewise.action.fallback 0
+learning_engine_featurewise.action.dyn_fallback_saved_bw 0
+learning_engine_featurewise.action.dyn_fallback_saved_bw_acc 26
+learning_engine_featurewise.action.index_1_explored 1
+learning_engine_featurewise.action.index_1_exploited 7220
+learning_engine_featurewise.action.index_3_explored 2
+learning_engine_featurewise.action.index_3_exploited 37
+learning_engine_featurewise.action.index_4_explored 0
+learning_engine_featurewise.action.index_4_exploited 17
+learning_engine_featurewise.action.index_5_explored 2
+learning_engine_featurewise.action.index_5_exploited 13
+learning_engine_featurewise.action.index_10_explored 1
+learning_engine_featurewise.action.index_10_exploited 6
+learning_engine_featurewise.action.index_11_explored 0
+learning_engine_featurewise.action.index_11_exploited 10
+learning_engine_featurewise.action.index_12_explored 0
+learning_engine_featurewise.action.index_12_exploited 7
+learning_engine_featurewise.action.index_22_explored 0
+learning_engine_featurewise.action.index_22_exploited 4
+learning_engine_featurewise.action.index_23_explored 1
+learning_engine_featurewise.action.index_23_exploited 2
+learning_engine_featurewise.action.index_30_explored 1
+learning_engine_featurewise.action.index_30_exploited 0
+learning_engine_featurewise.action.index_32_explored 4
+learning_engine_featurewise.action.index_32_exploited 0
+learning_engine_featurewise.action.index_-1_explored 1
+learning_engine_featurewise.action.index_-1_exploited 0
+learning_engine_featurewise.action.index_-3_explored 1
+learning_engine_featurewise.action.index_-3_exploited 0
+learning_engine_featurewise.action.index_-6_explored 0
+learning_engine_featurewise.action.index_-6_exploited 0
+learning_engine_featurewise.action.index_0_explored 0
+learning_engine_featurewise.action.index_0_exploited 0
+learning_engine_featurewise.learn.called 7045
+learning_engine_featurewise.learn.su_skip_PC 0
+learning_engine_featurewise.learn.su_skip_PC_Delta 0
+
+learning_engine_featurewise.q_value_histogram.bucket_0 0
+learning_engine_featurewise.q_value_histogram.bucket_1 0
+learning_engine_featurewise.q_value_histogram.bucket_2 0
+learning_engine_featurewise.q_value_histogram.bucket_3 0
+learning_engine_featurewise.q_value_histogram.bucket_4 584
+learning_engine_featurewise.q_value_histogram.bucket_5 135
+learning_engine_featurewise.q_value_histogram.bucket_6 6597
+learning_engine_featurewise.q_value_histogram.bucket_7 0
+
+learning_engine_featurewise.consensus.total 7316
+learning_engine_featurewise.consensus.feature_align_PC 7254
+learning_engine_featurewise.consensus.feature_align_PC_ratio 0.99
+learning_engine_featurewise.consensus.feature_align_PC_Delta 7279
+learning_engine_featurewise.consensus.feature_align_PC_Delta_ratio 0.99
+learning_engine_featurewise.consensus.feature_align_all 7217
+learning_engine_featurewise.consensus.feature_align_all_ratio 0.99
+
+learning_engine_featurewise.feature_PC_min_weight 1000000.00000000
+learning_engine_featurewise.feature_PC_max_weight 0.00000000
+learning_engine_featurewise.feature_PC_Delta_min_weight 1000000.00000000
+learning_engine_featurewise.feature_PC_Delta_max_weight 0.00000000
+unique_pcs 174
+unique_pages 241
+unique_trigger_pcs 38
+total_bitmaps_seen 0
+unique_bitmaps_seen 0
+
+scooby_bw_epochs 212554
+scooby_bw_level_0 212233
+scooby_bw_level_1 321
+scooby_bw_level_2 0
+scooby_bw_level_3 0
+
+scooby_ipc_epochs 0
+scooby_ipc_level_0 0
+scooby_ipc_level_1 0
+scooby_ipc_level_2 0
+scooby_ipc_level_3 0
+
+scooby_cache_acc_epochs 53114
+scooby_cache_acc_level_0 42606
+scooby_cache_acc_level_1 3298
+scooby_cache_acc_level_2 3220
+scooby_cache_acc_level_3 121
+scooby_cache_acc_level_4 63
+scooby_cache_acc_level_5 3147
+scooby_cache_acc_level_6 104
+scooby_cache_acc_level_7 77
+scooby_cache_acc_level_8 81
+scooby_cache_acc_level_9 397
+
+Channel_0_RQ_row_buffer_hit 9988
+Channel_0_RQ_row_buffer_miss 804
+Channel_0_WQ_row_buffer_hit 0
+Channel_0_WQ_row_buffer_miss 0
+Channel_0_WQ_full 0
+Channel_0_dbus_congested 1036
+
+avg_congested_cycle 10
+
+DRAM_bw_pochs 212554
+DRAM_bw_level_0 212233
+DRAM_bw_level_1 321
+DRAM_bw_level_2 0
+DRAM_bw_level_3 0

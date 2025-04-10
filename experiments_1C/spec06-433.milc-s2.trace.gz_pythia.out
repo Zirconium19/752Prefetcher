@@ -1,0 +1,1453 @@
+*************************************************
+   ChampSim Multicore Out-of-Order Simulator
+   Last compiled: Apr  3 2025 20:54:34
+*************************************************
+parsing config file: /home/zir/Pythia/config/pythia.ini
+
+trace_0 /home/zir/ChampSim/ML-DPC/ChampSimTraces/spec06/433.milc-s2.trace.gz
+adding L2C_PREFETCHER: Scooby
+Initialize SHIP state
+warmup_instructions 10000000
+simulation_instructions 50000000
+champsim_seed 165
+measure_ipc 0
+measure_ipc_epoch 1000
+measure_dram_bw 1
+measure_dram_bw_epoch 256
+measure_cache_acc 1
+measure_cache_acc_epoch 1024
+l1d_perfect 0
+l2c_perfect 0
+llc_perfect 0
+l1d_semi_perfect 0
+l2c_semi_perfect 0
+llc_semi_perfect 0
+semi_perfect_cache_page_buffer_size 64
+
+num_cpus 1
+cpu_freq 4000
+dram_io_freq 2400
+page_size 4096
+block_size 64
+max_read_per_cycle 8
+max_fill_per_cycle 1
+dram_channels 1
+log2_dram_channels 0
+dram_ranks 1
+dram_banks 8
+dram_rows 65536
+dram_columns 128
+dram_row_size 8
+dram_size 4096
+dram_pages 1048576
+
+fetch_width 6
+decode_width 6
+exec_width 4
+lq_width 2
+sq_width 2
+retire_width 4
+scheduler_size 128
+branch_mispredict_penalty 20
+rob_size 256
+lq_size 72
+sq_size 56
+num_instr_destinations_sparc 4
+num_instr_destinations 2
+num_instr_sources 4
+
+itlb_set 16
+itlb_way 8
+itlb_rq_size 16
+itlb_wq_size 16
+itlb_pq_size 0
+itlb_mshr_size 8
+itlb_latency 1
+
+dtlb_set 16
+dtlb_way 4
+dtlb_rq_size 16
+dtlb_wq_size 16
+dtlb_pq_size 0
+dtlb_mshr_size 8
+dtlb_latency 1
+
+stlb_set 128
+stlb_way 12
+stlb_rq_size 32
+stlb_wq_size 32
+stlb_pq_size 0
+stlb_mshr_size 16
+stlb_latency 8
+
+l1i_size 32
+l1i_set 64
+l1i_way 8
+l1i_rq_size 64
+l1i_wq_size 64
+l1i_pq_size 8
+l1i_mshr_size 8
+l1i_latency 1
+
+l1d_size 32
+l1d_set 64
+l1d_way 8
+l1d_rq_size 64
+l1d_wq_size 64
+l1d_pq_size 8
+l1d_mshr_size 16
+l1d_latency 4
+
+l2c_size 256
+l2c_set 512
+l2c_way 8
+l2c_rq_size 32
+l2c_wq_size 32
+l2c_pq_size 32
+l2c_mshr_size 32
+l2c_latency 10
+
+llc_size 2048
+llc_set 2048
+llc_way 16
+llc_rq_size 32
+llc_wq_size 32
+llc_pq_size 32
+llc_mshr_size 64
+llc_latency 20
+
+dram_channel_width 8
+dram_wq_size 64
+dram_rq_size 64
+tRP 15
+tRCD 15
+tCAS 12.5
+dram_dbus_turn_around_time 30
+dram_write_high_wm 56
+dram_write_low_wm 48
+min_dram_writes_per_switch 16
+dram_mtps 2400
+dram_dbus_return_time 13
+
+scooby_alpha 0.0065088
+scooby_gamma 0.556301
+scooby_epsilon 0.00182284
+scooby_state_num_bits 10
+scooby_max_states 1024
+scooby_seed 200
+scooby_policy EGreedy
+scooby_learning_type SARSA
+scooby_actions 1,3,4,5,10,11,12,22,23,30,32,-1,-3,-6,0,
+scooby_max_actions 15
+scooby_pt_size 256
+scooby_st_size 64
+scooby_max_pcs 5
+scooby_max_offsets 5
+scooby_max_deltas 5
+scooby_reward_none -4
+scooby_reward_incorrect -8
+scooby_reward_correct_untimely 12
+scooby_reward_correct_timely 20
+scooby_brain_zero_init 0
+scooby_enable_reward_all 0
+scooby_enable_track_multiple 0
+scooby_enable_reward_out_of_bounds 1
+scooby_reward_out_of_bounds -12
+scooby_state_type 1
+scooby_state_hash_type 11
+scooby_access_debug 0
+scooby_print_access_debug 0
+scooby_print_access_debug_pc deadbeef
+scooby_print_access_debug_pc_count 0
+scooby_print_trace 0
+scooby_enable_state_action_stats 1
+scooby_enable_reward_tracker_hit 0
+scooby_reward_tracker_hit -2
+scooby_enable_featurewise_engine 1
+scooby_pref_degree 1
+scooby_enable_dyn_degree 1
+scooby_max_to_avg_q_thresholds 0.5,1,2,
+scooby_dyn_degrees 1,2,4,4,
+scooby_multi_deg_select_type 2
+scooby_last_pref_offset_conf_thresholds 1,3,8,
+scooby_dyn_degrees_type2 1,2,4,6,
+scooby_action_tracker_size 2
+scooby_high_bw_thresh 4
+scooby_enable_hbw_reward 1
+scooby_reward_hbw_correct_timely 20
+scooby_reward_hbw_correct_untimely 12
+scooby_reward_hbw_incorrect -14
+scooby_reward_hbw_none -2
+scooby_reward_hbw_out_of_bounds -12
+scooby_reward_hbw_tracker_hit -2
+scooby_last_pref_offset_conf_thresholds_hbw 1,3,8,
+scooby_dyn_degrees_type2_hbw 1,2,4,6,
+
+le_enable_trace 0
+le_trace_interval 0
+le_trace_file_name 
+le_trace_state 0
+le_enable_score_plot 0
+le_plot_file_name 
+le_plot_actions 
+le_enable_action_trace 0
+le_action_trace_interval 0
+le_action_trace_name 
+le_enable_action_plot 0
+
+le_featurewise_active_features PC, PC_Delta
+le_featurewise_num_tilings 3,3,
+le_featurewise_num_tiles 128,128,
+le_featurewise_hash_types 2,2,
+le_featurewise_enable_tiling_offset 1,1,
+le_featurewise_max_q_thresh 0.5
+le_featurewise_enable_action_fallback 1
+le_featurewise_feature_weights 1,1,
+le_featurewise_enable_dynamic_weight 0
+le_featurewise_weight_gradient 0.001
+le_featurewise_disable_adjust_weight_all_features_align 1
+le_featurewise_selective_update 0
+le_featurewise_pooling_type 2
+le_featurewise_enable_dyn_action_fallback 1
+le_featurewise_bw_acc_check_level 1
+le_featurewise_acc_thresh 2
+le_featurewise_enable_trace 0
+le_featurewise_trace_feature_type 0
+le_featurewise_trace_feature 
+le_featurewise_trace_interval 0
+le_featurewise_trace_record_count 0
+le_featurewise_trace_file_name 
+le_featurewise_enable_score_plot 0
+le_featurewise_plot_actions 
+le_featurewise_plot_file_name 
+
+
+Heartbeat CPU  0 instructions:    1000002 cycles:     401889 heartbeat IPC: 2.48825 cumulative IPC: 2.48825 (Simulation time: 0 hr 0 min 2 sec) 
+Heartbeat CPU  0 instructions:    2000001 cycles:     804133 heartbeat IPC: 2.48605 cumulative IPC: 2.48715 (Simulation time: 0 hr 0 min 3 sec) 
+Heartbeat CPU  0 instructions:    3000001 cycles:    1206460 heartbeat IPC: 2.48554 cumulative IPC: 2.48661 (Simulation time: 0 hr 0 min 5 sec) 
+Heartbeat CPU  0 instructions:    4000000 cycles:    1608785 heartbeat IPC: 2.48555 cumulative IPC: 2.48635 (Simulation time: 0 hr 0 min 7 sec) 
+Heartbeat CPU  0 instructions:    5000000 cycles:    2011066 heartbeat IPC: 2.48582 cumulative IPC: 2.48624 (Simulation time: 0 hr 0 min 8 sec) 
+Heartbeat CPU  0 instructions:    6000001 cycles:    2413350 heartbeat IPC: 2.48581 cumulative IPC: 2.48617 (Simulation time: 0 hr 0 min 10 sec) 
+Heartbeat CPU  0 instructions:    7000001 cycles:    2815607 heartbeat IPC: 2.48597 cumulative IPC: 2.48614 (Simulation time: 0 hr 0 min 11 sec) 
+Heartbeat CPU  0 instructions:    8000000 cycles:    3217886 heartbeat IPC: 2.48583 cumulative IPC: 2.48610 (Simulation time: 0 hr 0 min 13 sec) 
+Heartbeat CPU  0 instructions:    9000003 cycles:    3620231 heartbeat IPC: 2.48544 cumulative IPC: 2.48603 (Simulation time: 0 hr 0 min 15 sec) 
+Heartbeat CPU  0 instructions:   10000002 cycles:    4022509 heartbeat IPC: 2.48584 cumulative IPC: 2.48601 (Simulation time: 0 hr 0 min 16 sec) 
+
+Warmup complete CPU  0 instructions:   10000002 cycles:    4022509 (Simulation time: 0 hr 0 min 16 sec) 
+
+Heartbeat CPU  0 instructions:   11000003 cycles:    5494043 heartbeat IPC: 0.67956 cumulative IPC: 0.67956 (Simulation time: 0 hr 0 min 18 sec) 
+Heartbeat CPU  0 instructions:   12000000 cycles:    6964478 heartbeat IPC: 0.68007 cumulative IPC: 0.67982 (Simulation time: 0 hr 0 min 20 sec) 
+Heartbeat CPU  0 instructions:   13000003 cycles:    8446022 heartbeat IPC: 0.67497 cumulative IPC: 0.67819 (Simulation time: 0 hr 0 min 22 sec) 
+Heartbeat CPU  0 instructions:   14000001 cycles:    9933916 heartbeat IPC: 0.67209 cumulative IPC: 0.67666 (Simulation time: 0 hr 0 min 24 sec) 
+Heartbeat CPU  0 instructions:   15000001 cycles:   11421246 heartbeat IPC: 0.67235 cumulative IPC: 0.67579 (Simulation time: 0 hr 0 min 26 sec) 
+Heartbeat CPU  0 instructions:   16000000 cycles:   12908768 heartbeat IPC: 0.67226 cumulative IPC: 0.67520 (Simulation time: 0 hr 0 min 29 sec) 
+Heartbeat CPU  0 instructions:   17000000 cycles:   14398301 heartbeat IPC: 0.67135 cumulative IPC: 0.67465 (Simulation time: 0 hr 0 min 31 sec) 
+Heartbeat CPU  0 instructions:   18000003 cycles:   15881316 heartbeat IPC: 0.67430 cumulative IPC: 0.67460 (Simulation time: 0 hr 0 min 33 sec) 
+Heartbeat CPU  0 instructions:   19000003 cycles:   17367390 heartbeat IPC: 0.67291 cumulative IPC: 0.67442 (Simulation time: 0 hr 0 min 35 sec) 
+Heartbeat CPU  0 instructions:   20000000 cycles:   18856529 heartbeat IPC: 0.67153 cumulative IPC: 0.67413 (Simulation time: 0 hr 0 min 37 sec) 
+Heartbeat CPU  0 instructions:   21000003 cycles:   20348938 heartbeat IPC: 0.67006 cumulative IPC: 0.67375 (Simulation time: 0 hr 0 min 39 sec) 
+Heartbeat CPU  0 instructions:   22000002 cycles:   21835469 heartbeat IPC: 0.67271 cumulative IPC: 0.67367 (Simulation time: 0 hr 0 min 41 sec) 
+Heartbeat CPU  0 instructions:   23000002 cycles:   23323368 heartbeat IPC: 0.67209 cumulative IPC: 0.67355 (Simulation time: 0 hr 0 min 43 sec) 
+Heartbeat CPU  0 instructions:   24000000 cycles:   24813523 heartbeat IPC: 0.67107 cumulative IPC: 0.67337 (Simulation time: 0 hr 0 min 45 sec) 
+Heartbeat CPU  0 instructions:   25000001 cycles:   26307603 heartbeat IPC: 0.66931 cumulative IPC: 0.67310 (Simulation time: 0 hr 0 min 47 sec) 
+Heartbeat CPU  0 instructions:   26000001 cycles:   27804691 heartbeat IPC: 0.66796 cumulative IPC: 0.67277 (Simulation time: 0 hr 0 min 49 sec) 
+Heartbeat CPU  0 instructions:   27000001 cycles:   29294515 heartbeat IPC: 0.67122 cumulative IPC: 0.67268 (Simulation time: 0 hr 0 min 51 sec) 
+Heartbeat CPU  0 instructions:   28000000 cycles:   30785376 heartbeat IPC: 0.67075 cumulative IPC: 0.67257 (Simulation time: 0 hr 0 min 54 sec) 
+Heartbeat CPU  0 instructions:   29000000 cycles:   32271132 heartbeat IPC: 0.67306 cumulative IPC: 0.67260 (Simulation time: 0 hr 0 min 56 sec) 
+Heartbeat CPU  0 instructions:   30000000 cycles:   33762025 heartbeat IPC: 0.67074 cumulative IPC: 0.67251 (Simulation time: 0 hr 0 min 58 sec) 
+Heartbeat CPU  0 instructions:   31000003 cycles:   35251083 heartbeat IPC: 0.67157 cumulative IPC: 0.67246 (Simulation time: 0 hr 1 min 0 sec) 
+Heartbeat CPU  0 instructions:   32000000 cycles:   36743654 heartbeat IPC: 0.66998 cumulative IPC: 0.67235 (Simulation time: 0 hr 1 min 2 sec) 
+Heartbeat CPU  0 instructions:   33000001 cycles:   38231398 heartbeat IPC: 0.67216 cumulative IPC: 0.67234 (Simulation time: 0 hr 1 min 4 sec) 
+Heartbeat CPU  0 instructions:   34000003 cycles:   39723065 heartbeat IPC: 0.67039 cumulative IPC: 0.67226 (Simulation time: 0 hr 1 min 6 sec) 
+Heartbeat CPU  0 instructions:   35000003 cycles:   41211987 heartbeat IPC: 0.67163 cumulative IPC: 0.67223 (Simulation time: 0 hr 1 min 8 sec) 
+Heartbeat CPU  0 instructions:   36000000 cycles:   42707807 heartbeat IPC: 0.66853 cumulative IPC: 0.67209 (Simulation time: 0 hr 1 min 10 sec) 
+Heartbeat CPU  0 instructions:   37000002 cycles:   44197478 heartbeat IPC: 0.67129 cumulative IPC: 0.67206 (Simulation time: 0 hr 1 min 12 sec) 
+Heartbeat CPU  0 instructions:   38000001 cycles:   45687212 heartbeat IPC: 0.67126 cumulative IPC: 0.67203 (Simulation time: 0 hr 1 min 14 sec) 
+Heartbeat CPU  0 instructions:   39000001 cycles:   47181373 heartbeat IPC: 0.66927 cumulative IPC: 0.67194 (Simulation time: 0 hr 1 min 16 sec) 
+Heartbeat CPU  0 instructions:   40000000 cycles:   48673887 heartbeat IPC: 0.67001 cumulative IPC: 0.67187 (Simulation time: 0 hr 1 min 19 sec) 
+Heartbeat CPU  0 instructions:   41000000 cycles:   50163346 heartbeat IPC: 0.67138 cumulative IPC: 0.67186 (Simulation time: 0 hr 1 min 21 sec) 
+Heartbeat CPU  0 instructions:   42000000 cycles:   51665934 heartbeat IPC: 0.66552 cumulative IPC: 0.67166 (Simulation time: 0 hr 1 min 23 sec) 
+Heartbeat CPU  0 instructions:   43000003 cycles:   53156303 heartbeat IPC: 0.67098 cumulative IPC: 0.67164 (Simulation time: 0 hr 1 min 25 sec) 
+Heartbeat CPU  0 instructions:   44000000 cycles:   54643013 heartbeat IPC: 0.67262 cumulative IPC: 0.67166 (Simulation time: 0 hr 1 min 27 sec) 
+Heartbeat CPU  0 instructions:   45000000 cycles:   56134019 heartbeat IPC: 0.67069 cumulative IPC: 0.67164 (Simulation time: 0 hr 1 min 29 sec) 
+Heartbeat CPU  0 instructions:   46000003 cycles:   57629527 heartbeat IPC: 0.66867 cumulative IPC: 0.67155 (Simulation time: 0 hr 1 min 31 sec) 
+Heartbeat CPU  0 instructions:   47000002 cycles:   59123130 heartbeat IPC: 0.66952 cumulative IPC: 0.67150 (Simulation time: 0 hr 1 min 33 sec) 
+Heartbeat CPU  0 instructions:   48000000 cycles:   60618223 heartbeat IPC: 0.66885 cumulative IPC: 0.67143 (Simulation time: 0 hr 1 min 35 sec) 
+Heartbeat CPU  0 instructions:   49000001 cycles:   62110551 heartbeat IPC: 0.67009 cumulative IPC: 0.67139 (Simulation time: 0 hr 1 min 37 sec) 
+Heartbeat CPU  0 instructions:   50000001 cycles:   63600917 heartbeat IPC: 0.67098 cumulative IPC: 0.67138 (Simulation time: 0 hr 1 min 39 sec) 
+Heartbeat CPU  0 instructions:   51000001 cycles:   65094836 heartbeat IPC: 0.66938 cumulative IPC: 0.67134 (Simulation time: 0 hr 1 min 41 sec) 
+Heartbeat CPU  0 instructions:   52000000 cycles:   66587766 heartbeat IPC: 0.66982 cumulative IPC: 0.67130 (Simulation time: 0 hr 1 min 44 sec) 
+Heartbeat CPU  0 instructions:   53000000 cycles:   68076133 heartbeat IPC: 0.67188 cumulative IPC: 0.67131 (Simulation time: 0 hr 1 min 46 sec) 
+Heartbeat CPU  0 instructions:   54000001 cycles:   69564127 heartbeat IPC: 0.67205 cumulative IPC: 0.67133 (Simulation time: 0 hr 1 min 48 sec) 
+Heartbeat CPU  0 instructions:   55000003 cycles:   71052634 heartbeat IPC: 0.67182 cumulative IPC: 0.67134 (Simulation time: 0 hr 1 min 50 sec) 
+Heartbeat CPU  0 instructions:   56000000 cycles:   72543904 heartbeat IPC: 0.67057 cumulative IPC: 0.67132 (Simulation time: 0 hr 1 min 52 sec) 
+Heartbeat CPU  0 instructions:   57000003 cycles:   74033467 heartbeat IPC: 0.67134 cumulative IPC: 0.67132 (Simulation time: 0 hr 1 min 54 sec) 
+Heartbeat CPU  0 instructions:   58000001 cycles:   75529628 heartbeat IPC: 0.66838 cumulative IPC: 0.67126 (Simulation time: 0 hr 1 min 56 sec) 
+Heartbeat CPU  0 instructions:   59000002 cycles:   77014686 heartbeat IPC: 0.67338 cumulative IPC: 0.67130 (Simulation time: 0 hr 1 min 58 sec) 
+Heartbeat CPU  0 instructions:   60000000 cycles:   78504507 heartbeat IPC: 0.67122 cumulative IPC: 0.67130 (Simulation time: 0 hr 2 min 0 sec) 
+Finished CPU 0 instructions: 50000001 cycles: 74482006 cumulative IPC: 0.67130 (Simulation time: 0 hr 2 min 0 sec) 
+
+ChampSim completed all CPUs
+
+[ROI Statistics]
+Core_0_instructions 50000001
+Core_0_cycles 74482006
+Core_0_IPC 0.67130
+
+Core_0_branch_prediction_accuracy 100.00000
+Core_0_branch_MPKI 0.00000
+Core_0_average_ROB_occupancy_at_mispredict -nan
+
+Core_0_L1D_total_access 7939958
+Core_0_L1D_total_hit 7239159
+Core_0_L1D_total_miss 700799
+Core_0_L1D_loads 4679092
+Core_0_L1D_load_hit 3978293
+Core_0_L1D_load_miss 700799
+Core_0_L1D_RFOs 3260866
+Core_0_L1D_RFO_hit 3260866
+Core_0_L1D_RFO_miss 0
+Core_0_L1D_prefetches 0
+Core_0_L1D_prefetch_hit 0
+Core_0_L1D_prefetch_miss 0
+Core_0_L1D_writebacks 0
+Core_0_L1D_writeback_hit 0
+Core_0_L1D_writeback_miss 0
+Core_0_L1D_prefetch_requested 0
+Core_0_L1D_prefetch_dropped 0
+Core_0_L1D_prefetch_issued 0
+Core_0_L1D_prefetch_filled 0
+Core_0_L1D_prefetch_useful 0
+Core_0_L1D_prefetch_useless 0
+Core_0_L1D_prefetch_late 0
+Core_0_L1D_average_miss_latency 168.71838
+
+Core_0_L1D_rq_access 14804915
+Core_0_L1D_rq_forward 0
+Core_0_L1D_rq_merged 9420594
+Core_0_L1D_rq_to_cache 5384321
+Core_0_L1D_rq_full 0
+
+Core_0_L1D_wq_access 3260866
+Core_0_L1D_wq_forward 0
+Core_0_L1D_wq_merged 0
+Core_0_L1D_wq_to_cache 3260866
+Core_0_L1D_wq_full 0
+
+Core_0_L1D_pq_access 0
+Core_0_L1D_pq_forward 0
+Core_0_L1D_pq_merged 0
+Core_0_L1D_pq_to_cache 0
+Core_0_L1D_pq_full 0
+
+Core_0_L1D_acc_epochs 70333
+Core_0_L1D_acc_level_0 70333
+Core_0_L1D_acc_level_1 0
+Core_0_L1D_acc_level_2 0
+Core_0_L1D_acc_level_3 0
+Core_0_L1D_acc_level_4 0
+Core_0_L1D_acc_level_5 0
+Core_0_L1D_acc_level_6 0
+Core_0_L1D_acc_level_7 0
+Core_0_L1D_acc_level_8 0
+Core_0_L1D_acc_level_9 0
+
+Core_0_L1I_total_access 10756834
+Core_0_L1I_total_hit 10756834
+Core_0_L1I_total_miss 0
+Core_0_L1I_loads 10756834
+Core_0_L1I_load_hit 10756834
+Core_0_L1I_load_miss 0
+Core_0_L1I_RFOs 0
+Core_0_L1I_RFO_hit 0
+Core_0_L1I_RFO_miss 0
+Core_0_L1I_prefetches 0
+Core_0_L1I_prefetch_hit 0
+Core_0_L1I_prefetch_miss 0
+Core_0_L1I_writebacks 0
+Core_0_L1I_writeback_hit 0
+Core_0_L1I_writeback_miss 0
+Core_0_L1I_prefetch_requested 0
+Core_0_L1I_prefetch_dropped 0
+Core_0_L1I_prefetch_issued 0
+Core_0_L1I_prefetch_filled 0
+Core_0_L1I_prefetch_useful 0
+Core_0_L1I_prefetch_useless 0
+Core_0_L1I_prefetch_late 0
+Core_0_L1I_average_miss_latency -nan
+
+Core_0_L1I_rq_access 50000006
+Core_0_L1I_rq_forward 0
+Core_0_L1I_rq_merged 39243172
+Core_0_L1I_rq_to_cache 10756834
+Core_0_L1I_rq_full 0
+
+Core_0_L1I_wq_access 0
+Core_0_L1I_wq_forward 0
+Core_0_L1I_wq_merged 0
+Core_0_L1I_wq_to_cache 0
+Core_0_L1I_wq_full 0
+
+Core_0_L1I_pq_access 0
+Core_0_L1I_pq_forward 0
+Core_0_L1I_pq_merged 0
+Core_0_L1I_pq_to_cache 0
+Core_0_L1I_pq_full 0
+
+Core_0_L1I_acc_epochs 70333
+Core_0_L1I_acc_level_0 70333
+Core_0_L1I_acc_level_1 0
+Core_0_L1I_acc_level_2 0
+Core_0_L1I_acc_level_3 0
+Core_0_L1I_acc_level_4 0
+Core_0_L1I_acc_level_5 0
+Core_0_L1I_acc_level_6 0
+Core_0_L1I_acc_level_7 0
+Core_0_L1I_acc_level_8 0
+Core_0_L1I_acc_level_9 0
+
+Core_0_L2C_total_access 1688383
+Core_0_L2C_total_hit 482372
+Core_0_L2C_total_miss 1206011
+Core_0_L2C_loads 700799
+Core_0_L2C_load_hit 201681
+Core_0_L2C_load_miss 499118
+Core_0_L2C_RFOs 0
+Core_0_L2C_RFO_hit 0
+Core_0_L2C_RFO_miss 0
+Core_0_L2C_prefetches 815970
+Core_0_L2C_prefetch_hit 135538
+Core_0_L2C_prefetch_miss 680432
+Core_0_L2C_writebacks 171614
+Core_0_L2C_writeback_hit 145153
+Core_0_L2C_writeback_miss 26461
+Core_0_L2C_prefetch_requested 1736404
+Core_0_L2C_prefetch_dropped 0
+Core_0_L2C_prefetch_issued 1736404
+Core_0_L2C_prefetch_filled 841994
+Core_0_L2C_prefetch_useful 288118
+Core_0_L2C_prefetch_useless 551974
+Core_0_L2C_prefetch_late 132344
+Core_0_L2C_average_miss_latency 228.02489
+
+Core_0_L2C_rq_access 700799
+Core_0_L2C_rq_forward 0
+Core_0_L2C_rq_merged 0
+Core_0_L2C_rq_to_cache 700799
+Core_0_L2C_rq_full 0
+
+Core_0_L2C_wq_access 171614
+Core_0_L2C_wq_forward 0
+Core_0_L2C_wq_merged 0
+Core_0_L2C_wq_to_cache 171614
+Core_0_L2C_wq_full 0
+
+Core_0_L2C_pq_access 1736404
+Core_0_L2C_pq_forward 0
+Core_0_L2C_pq_merged 304457
+Core_0_L2C_pq_to_cache 1431947
+Core_0_L2C_pq_full 0
+
+Core_0_L2C_acc_epochs 70333
+Core_0_L2C_acc_level_0 1
+Core_0_L2C_acc_level_1 3223
+Core_0_L2C_acc_level_2 30200
+Core_0_L2C_acc_level_3 25343
+Core_0_L2C_acc_level_4 6143
+Core_0_L2C_acc_level_5 4763
+Core_0_L2C_acc_level_6 567
+Core_0_L2C_acc_level_7 70
+Core_0_L2C_acc_level_8 22
+Core_0_L2C_acc_level_9 1
+
+Core_0_LLC_total_access 1351725
+Core_0_LLC_total_hit 7380
+Core_0_LLC_total_miss 1344345
+Core_0_LLC_loads 367324
+Core_0_LLC_load_hit 1
+Core_0_LLC_load_miss 367323
+Core_0_LLC_RFOs 0
+Core_0_LLC_RFO_hit 0
+Core_0_LLC_RFO_miss 0
+Core_0_LLC_prefetches 812226
+Core_0_LLC_prefetch_hit 0
+Core_0_LLC_prefetch_miss 812226
+Core_0_LLC_writebacks 172175
+Core_0_LLC_writeback_hit 7379
+Core_0_LLC_writeback_miss 164796
+Core_0_LLC_prefetch_requested 0
+Core_0_LLC_prefetch_dropped 0
+Core_0_LLC_prefetch_issued 0
+Core_0_LLC_prefetch_filled 974338
+Core_0_LLC_prefetch_useful 7
+Core_0_LLC_prefetch_useless 973268
+Core_0_LLC_prefetch_late 0
+Core_0_LLC_average_miss_latency 186.67405
+
+Core_0_LLC_rq_access 367324
+Core_0_LLC_rq_forward 0
+Core_0_LLC_rq_merged 0
+Core_0_LLC_rq_to_cache 367324
+Core_0_LLC_rq_full 0
+
+Core_0_LLC_wq_access 172175
+Core_0_LLC_wq_forward 0
+Core_0_LLC_wq_merged 0
+Core_0_LLC_wq_to_cache 172175
+Core_0_LLC_wq_full 0
+
+Core_0_LLC_pq_access 974339
+Core_0_LLC_pq_forward 0
+Core_0_LLC_pq_merged 0
+Core_0_LLC_pq_to_cache 974339
+Core_0_LLC_pq_full 0
+
+Core_0_LLC_acc_epochs 76665
+Core_0_LLC_acc_level_0 76665
+Core_0_LLC_acc_level_1 0
+Core_0_LLC_acc_level_2 0
+Core_0_LLC_acc_level_3 0
+Core_0_LLC_acc_level_4 0
+Core_0_LLC_acc_level_5 0
+Core_0_LLC_acc_level_6 0
+Core_0_LLC_acc_level_7 0
+Core_0_LLC_acc_level_8 0
+Core_0_LLC_acc_level_9 0
+
+Core_0_major_page_fault 0
+Core_0_minor_page_fault 78592
+
+scooby_st_lookup 841001
+scooby_st_hit 760699
+scooby_st_evict 80238
+scooby_st_insert 80302
+scooby_st_streaming 0
+
+scooby_predict_called 841001
+scooby_predict_out_of_bounds 72090
+scooby_predict_action_1 668029
+scooby_predict_issue_action_1 646503
+scooby_predict_hit_action_1 21526
+scooby_predict_out_of_bounds_action_1 3308
+scooby_predict_action_3 182
+scooby_predict_issue_action_3 181
+scooby_predict_hit_action_3 1
+scooby_predict_out_of_bounds_action_3 14
+scooby_predict_action_4 164
+scooby_predict_issue_action_4 164
+scooby_predict_hit_action_4 0
+scooby_predict_out_of_bounds_action_4 22
+scooby_predict_action_5 146
+scooby_predict_issue_action_5 146
+scooby_predict_hit_action_5 0
+scooby_predict_out_of_bounds_action_5 26
+scooby_predict_action_10 163
+scooby_predict_issue_action_10 163
+scooby_predict_hit_action_10 0
+scooby_predict_out_of_bounds_action_10 19
+scooby_predict_action_11 157
+scooby_predict_issue_action_11 157
+scooby_predict_hit_action_11 0
+scooby_predict_out_of_bounds_action_11 25
+scooby_predict_action_12 145
+scooby_predict_issue_action_12 145
+scooby_predict_hit_action_12 0
+scooby_predict_out_of_bounds_action_12 25
+scooby_predict_action_22 137
+scooby_predict_issue_action_22 109
+scooby_predict_hit_action_22 28
+scooby_predict_out_of_bounds_action_22 35
+scooby_predict_action_23 240
+scooby_predict_issue_action_23 107
+scooby_predict_hit_action_23 133
+scooby_predict_out_of_bounds_action_23 25
+scooby_predict_action_30 68316
+scooby_predict_issue_action_30 68307
+scooby_predict_hit_action_30 9
+scooby_predict_out_of_bounds_action_30 68351
+scooby_predict_action_32 61
+scooby_predict_issue_action_32 61
+scooby_predict_hit_action_32 0
+scooby_predict_out_of_bounds_action_32 49
+scooby_predict_action_-1 30905
+scooby_predict_issue_action_-1 22150
+scooby_predict_hit_action_-1 8755
+scooby_predict_out_of_bounds_action_-1 172
+scooby_predict_action_-3 100
+scooby_predict_issue_action_-3 100
+scooby_predict_hit_action_-3 0
+scooby_predict_out_of_bounds_action_-3 3
+scooby_predict_action_-6 69
+scooby_predict_issue_action_-6 61
+scooby_predict_hit_action_-6 8
+scooby_predict_out_of_bounds_action_-6 16
+scooby_predict_action_0 97
+scooby_predict_issue_action_0 0
+scooby_predict_hit_action_0 0
+scooby_predict_out_of_bounds_action_0 0
+scooby_predict_multi_deg_called 407154
+scooby_predict_predicted 1736404
+scooby_predict_multi_deg 998050
+scooby_predict_multi_deg_2 404297
+scooby_predict_multi_deg_3 241278
+scooby_predict_multi_deg_4 238966
+scooby_predict_multi_deg_5 58015
+scooby_predict_multi_deg_6 55494
+scooby_predict_multi_deg_7 0
+scooby_predict_multi_deg_8 0
+scooby_predict_multi_deg_9 0
+scooby_predict_multi_deg_10 0
+scooby_predict_multi_deg_11 0
+scooby_predict_multi_deg_12 0
+scooby_predict_multi_deg_13 0
+scooby_predict_multi_deg_14 0
+scooby_predict_multi_deg_15 0
+scooby_predict_multi_deg_16 0
+
+scooby_selected_deg_1 331200
+scooby_selected_deg_2 126308
+scooby_selected_deg_3 0
+scooby_selected_deg_4 213054
+scooby_selected_deg_5 0
+scooby_selected_deg_6 67792
+scooby_selected_deg_7 0
+scooby_selected_deg_8 0
+scooby_selected_deg_9 0
+scooby_selected_deg_10 0
+scooby_selected_deg_11 0
+scooby_selected_deg_12 0
+scooby_selected_deg_13 0
+scooby_selected_deg_14 0
+scooby_selected_deg_15 0
+scooby_selected_deg_16 0
+
+scooby_state_417a57|29|1 34211,16,16,15,5,14,14,7,4,3,5,1,4,3,7,34325,
+scooby_state_417c32|37|1 34257,6,4,6,6,8,4,6,6,4,2,4,4,3,5,34325,
+scooby_state_417a27|28|1 34275,7,3,5,4,0,3,3,7,4,2,4,2,4,2,34325,
+scooby_state_417c32|4|0 34272,5,4,4,5,2,5,1,1,4,6,1,3,8,4,34325,
+scooby_state_417ab7|5|1 34272,5,2,3,1,6,7,4,1,5,2,3,7,1,6,34325,
+scooby_state_417c67|6|1 65,14,13,11,12,16,8,17,16,34128,8,3,3,5,6,34325,
+scooby_state_417c67|38|1 71,15,17,7,14,15,1,15,19,34132,4,5,2,4,4,34325,
+scooby_state_417b90|38|1 16,14,13,14,15,15,15,16,67,34132,2,2,1,1,2,34325,
+scooby_state_4179f2|27|0 34254,7,6,6,7,6,1,8,4,3,1,5,6,3,8,34325,
+scooby_state_417c32|5|1 34270,3,2,3,6,3,2,6,6,7,3,1,5,2,6,34325,
+scooby_state_4179f2|59|30 34275,4,2,5,4,4,5,7,1,3,2,4,2,1,6,34325,
+scooby_state_417a27|60|1 34286,6,3,4,4,0,0,5,1,3,5,5,1,2,0,34325,
+scooby_state_417a57|61|1 34212,13,15,15,6,15,10,5,8,3,2,9,6,3,3,34325,
+scooby_state_417ab7|37|1 34272,3,2,4,6,3,4,3,3,8,3,2,5,3,4,34325,
+scooby_state_417b90|6|1 15,16,17,12,14,13,14,19,63,34120,2,2,8,9,1,34325,
+scooby_state_417c32|36|30 34263,2,2,6,9,3,3,4,2,7,6,3,3,6,5,34324,
+scooby_state_417a06|36|30 30837,3,7,2,4,3,7,2,6,5,1,2,6,4,3,30892,
+scooby_state_417a06|4|-57 29287,5,7,3,5,7,3,4,2,6,3,5,4,2,1,29344,
+scooby_state_417a06|4|-34 3428,0,0,1,0,0,0,0,0,0,0,1,1,0,1,3432,
+scooby_state_417a06|36|-25 3253,0,1,1,1,1,1,0,0,0,0,0,1,0,2,3261,
+scooby_state_417a06|4|0 1548,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1549,
+scooby_state_418528|38|1 1072,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1073,
+scooby_state_418528|9|1 1070,0,0,0,0,0,0,0,1,0,1,0,0,1,0,1073,
+scooby_state_418528|39|1 1072,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1073,
+scooby_state_418528|63|1 1071,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1073,
+scooby_state_418528|22|1 1070,0,0,0,0,1,0,0,0,0,2,0,0,0,0,1073,
+scooby_state_418528|57|1 1071,0,0,0,0,0,0,0,1,0,0,1,0,0,0,1073,
+scooby_state_418528|4|1 1071,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1073,
+scooby_state_418528|28|1 1072,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1073,
+scooby_state_418528|37|1 1073,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|49|1 1071,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|36|1 1071,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1073,
+scooby_state_418528|27|1 1071,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1073,
+scooby_state_418528|1|1 1071,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1073,
+scooby_state_418528|26|1 1071,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1073,
+scooby_state_418528|31|1 1072,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1073,
+scooby_state_418528|53|1 1070,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|58|1 1070,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1073,
+scooby_state_418528|29|1 1071,0,1,0,0,0,0,0,0,0,1,0,0,0,0,1073,
+scooby_state_418528|47|1 1072,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1073,
+scooby_state_418528|56|1 1069,1,0,0,0,1,0,0,0,1,0,1,0,0,0,1073,
+scooby_state_418528|10|1 1067,0,0,1,1,2,1,0,0,0,0,0,0,0,1,1073,
+scooby_state_418528|3|1 1069,0,0,0,0,0,1,1,0,0,0,0,0,2,0,1073,
+scooby_state_418528|55|1 1072,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|2|1 1070,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1073,
+scooby_state_418528|35|1 1067,0,0,1,0,1,2,0,1,0,0,0,1,0,0,1073,
+scooby_state_418528|17|1 1071,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|19|1 1071,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1073,
+scooby_state_418528|48|1 1073,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|11|1 1072,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1073,
+scooby_state_418528|20|1 1068,0,1,0,1,0,0,0,1,0,0,0,2,0,0,1073,
+scooby_state_418528|12|1 1071,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1073,
+scooby_state_418528|46|1 1072,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1073,
+scooby_state_418528|30|1 1072,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1073,
+scooby_state_418528|8|1 1073,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073,
+scooby_state_418528|13|1 1070,0,1,0,0,1,0,0,0,0,1,0,0,0,0,1073,
+scooby_state_418528|21|1 1069,0,0,0,0,1,1,1,0,1,0,0,0,0,0,1073,
+scooby_state_418528|14|1 1070,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1072,
+scooby_state_418528|40|1 1070,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1072,
+scooby_state_418528|32|1 1070,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1072,
+scooby_state_418528|43|1 1071,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1072,
+scooby_state_418528|25|1 1067,0,1,0,0,0,0,1,1,0,0,0,1,1,0,1072,
+scooby_state_418528|51|1 1070,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1072,
+scooby_state_418528|7|1 1072,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1072,
+scooby_state_418528|44|1 1071,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1072,
+scooby_state_418528|5|1 1072,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1072,
+scooby_state_418528|16|1 1071,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1072,
+scooby_state_418528|24|1 1070,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1072,
+scooby_state_418528|61|1 1070,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1072,
+scooby_state_418528|52|1 1069,0,0,1,0,0,0,0,0,0,0,1,1,0,0,1072,
+scooby_state_418528|62|1 1070,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1072,
+scooby_state_418528|33|1 1070,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1072,
+scooby_state_418528|54|1 1071,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1072,
+scooby_state_418528|15|1 1069,0,1,0,1,0,0,0,0,1,0,0,0,0,0,1072,
+scooby_state_418528|42|1 1069,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1072,
+scooby_state_418528|23|1 1071,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1072,
+scooby_state_418528|60|1 1069,1,0,0,0,0,0,1,0,1,0,0,0,0,0,1072,
+scooby_state_418528|41|1 1067,1,1,0,1,0,0,0,0,0,0,0,1,0,0,1071,
+scooby_state_418528|59|1 1069,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1071,
+scooby_state_418528|18|1 1006,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1009,
+scooby_state_418528|45|1 982,0,0,0,0,0,0,0,0,1,0,0,1,0,0,984,
+scooby_state_418528|34|1 979,0,0,0,0,0,0,0,1,0,0,0,0,1,1,982,
+scooby_state_418528|50|1 980,0,0,0,1,0,0,0,0,0,0,0,0,0,0,981,
+scooby_state_4185f9|20|1 893,0,0,0,0,0,0,0,0,0,0,1,0,0,0,894,
+scooby_state_4185f9|10|1 892,0,0,0,1,0,0,1,0,0,0,0,0,0,0,894,
+scooby_state_4185f9|25|1 894,0,0,0,0,0,0,0,0,0,0,0,0,0,0,894,
+scooby_state_4185f9|0|0 893,0,0,0,0,0,0,0,0,0,0,0,1,0,0,894,
+scooby_state_4185f9|15|1 894,0,0,0,0,0,0,0,0,0,0,0,0,0,0,894,
+scooby_state_4185f9|35|1 892,0,0,0,0,0,1,0,0,0,0,0,0,0,0,893,
+scooby_state_418528|6|1 627,0,0,0,0,0,0,0,0,0,0,0,0,0,0,627,
+scooby_state_4184b8|15|-2 624,0,0,0,1,0,0,1,0,0,0,0,0,0,0,626,
+scooby_state_418528|0|-1 626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|19|-2 622,0,1,1,0,0,1,0,0,0,0,0,0,1,0,626,
+scooby_state_4184b8|20|-2 626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|29|-2 624,0,0,0,0,0,0,0,0,0,0,2,0,0,0,626,
+scooby_state_4184b8|34|-2 626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|0|-2 626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|63|8 626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|54|-2 625,0,1,0,0,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|10|-2 624,1,0,0,1,0,0,0,0,0,0,0,0,0,0,626,
+scooby_state_4184b8|59|-2 623,1,0,0,0,0,0,0,0,0,0,0,0,0,1,625,
+scooby_state_4184b8|5|-2 624,0,0,0,0,0,0,0,0,0,0,0,0,1,0,625,
+scooby_state_4184b8|24|-2 625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,625,
+scooby_state_4184b8|33|8 624,0,0,0,0,0,0,0,0,0,0,1,0,0,0,625,
+scooby_state_4184b8|39|-2 625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,625,
+scooby_state_4184b8|14|-2 625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,625,
+scooby_state_4184b8|58|-2 624,0,0,0,0,0,0,0,0,0,0,0,0,0,0,624,
+scooby_state_4184b8|25|-2 538,0,0,0,0,0,0,0,0,0,0,0,0,0,0,538,
+scooby_state_4184b8|43|8 537,0,0,0,0,0,1,0,0,0,0,0,0,0,0,538,
+scooby_state_4184b8|38|8 535,0,0,0,0,0,1,0,0,0,0,0,0,1,0,537,
+scooby_state_4184b8|36|8 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|7|-2 535,0,0,0,1,0,1,0,0,0,0,0,0,0,0,537,
+scooby_state_4185f1|46|9 7,0,0,0,0,0,1,0,0,0,0,529,0,0,0,537,
+scooby_state_4184b8|45|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|62|8 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|44|-2 536,0,0,0,0,0,0,0,0,1,0,0,0,0,0,537,
+scooby_state_4184b8|47|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|55|8 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|18|7 535,0,0,0,0,0,0,0,0,0,1,0,1,0,0,537,
+scooby_state_4185f1|1|0 0,1,0,0,0,1,0,0,0,1,0,533,1,0,0,537,
+scooby_state_4185c0|40|1 1,0,0,0,0,0,1,0,0,0,1,534,0,0,0,537,
+scooby_state_4184b8|11|8 536,0,1,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|21|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|2|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4185c0|37|1 0,1,0,0,0,0,1,0,0,0,0,535,0,0,0,537,
+scooby_state_4185c0|32|1 1,0,0,0,0,1,0,0,0,0,1,534,0,0,0,537,
+scooby_state_4184b8|16|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,1,537,
+scooby_state_4184b8|9|8 535,2,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|30|8 535,1,0,0,0,0,0,0,1,0,0,0,0,0,0,537,
+scooby_state_4185f1|41|9 7,0,0,0,0,0,2,0,0,0,0,528,0,0,0,537,
+scooby_state_4184b8|52|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|3|0 536,1,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|35|8 533,0,1,0,1,0,1,0,0,0,1,0,0,0,0,537,
+scooby_state_4184b8|27|-2 535,0,0,0,0,1,0,0,0,0,0,1,0,0,0,537,
+scooby_state_4184b8|53|8 536,0,1,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4185c0|45|1 0,1,0,0,0,0,0,1,0,0,0,535,0,0,0,537,
+scooby_state_4184b8|26|-2 533,1,1,0,0,1,0,0,0,0,0,0,1,0,0,537,
+scooby_state_4184b8|1|-2 534,0,0,0,2,0,0,0,0,0,0,0,1,0,0,537,
+scooby_state_4185f1|27|9 7,0,0,0,0,0,0,0,0,1,0,529,0,0,0,537,
+scooby_state_4185f1|2|0 1,0,0,0,0,1,0,0,2,0,0,533,0,0,0,537,
+scooby_state_4184b8|56|8 536,0,0,0,0,0,1,0,0,0,0,0,0,0,0,537,
+scooby_state_4184b8|46|-2 537,0,0,0,0,0,0,0,0,0,0,0,0,0,0,537,
+scooby_state_4185f1|22|9 7,0,0,0,0,0,0,0,0,0,0,530,0,0,0,537,
+scooby_state_4184b8|36|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|16|-2 535,1,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185f1|7|0 0,1,1,0,0,0,1,0,0,1,1,531,0,0,0,536,
+scooby_state_4184b8|45|8 535,0,0,0,0,0,0,0,0,0,0,0,0,0,1,536,
+scooby_state_4184b8|60|-2 535,0,0,0,0,0,0,0,0,0,0,0,1,0,0,536,
+scooby_state_4184b8|23|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|42|-2 534,0,0,0,1,0,0,0,1,0,0,0,0,0,0,536,
+scooby_state_4184b8|51|8 534,0,0,0,1,0,0,1,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|61|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185f1|61|9 6,0,0,0,0,0,0,0,0,0,0,530,0,0,0,536,
+scooby_state_4184b8|6|-2 534,1,0,0,1,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|6|0 535,0,0,0,0,0,0,0,0,0,0,0,0,1,0,536,
+scooby_state_4184b8|12|-2 534,0,0,0,0,0,0,1,0,0,0,0,0,0,1,536,
+scooby_state_4184b8|57|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|9|-2 534,0,0,1,0,0,0,0,0,0,0,0,1,0,0,536,
+scooby_state_4184b8|60|8 533,1,1,0,0,0,0,0,0,0,0,1,0,0,0,536,
+scooby_state_4184b8|48|8 534,0,0,0,0,0,0,1,0,0,0,0,0,0,1,536,
+scooby_state_4184b8|40|-2 535,0,0,0,0,0,0,0,0,0,0,0,0,0,1,536,
+scooby_state_4184b8|1|0 535,0,0,0,1,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|50|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|41|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|12|8 533,0,1,0,0,1,0,0,0,1,0,0,0,0,0,536,
+scooby_state_4184b8|31|8 535,0,0,0,0,0,0,0,0,0,0,0,0,1,0,536,
+scooby_state_4184b8|49|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|35|-2 534,1,0,0,0,1,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|7|7 535,0,0,0,0,0,0,0,0,0,0,1,0,0,0,536,
+scooby_state_4185f1|56|9 7,0,0,0,0,0,0,0,0,0,0,529,0,0,0,536,
+scooby_state_4184b8|22|-2 535,0,0,1,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|44|8 535,0,0,1,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|46|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185f1|32|9 7,0,0,0,1,0,1,0,0,0,0,527,0,0,0,536,
+scooby_state_4184b8|8|8 535,0,0,0,0,0,0,0,0,0,0,0,0,0,1,536,
+scooby_state_4184b8|62|7 534,0,0,0,0,1,0,1,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|61|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|4|-2 535,0,0,1,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|21|8 534,0,1,0,0,0,1,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|28|8 535,0,0,0,1,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|55|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|31|-2 535,0,1,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|2|0 535,0,0,0,0,0,1,0,0,0,0,0,0,0,0,536,
+scooby_state_4185f1|12|9 7,0,0,0,0,0,0,0,0,0,0,529,0,0,0,536,
+scooby_state_4184b8|13|7 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|11|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185f1|6|0 0,0,1,0,0,0,1,0,0,0,1,533,0,0,0,536,
+scooby_state_4184b8|32|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|56|-2 534,0,0,0,1,0,0,0,0,0,1,0,0,0,0,536,
+scooby_state_4185f1|17|9 6,0,0,0,0,0,0,0,0,0,0,529,0,1,0,536,
+scooby_state_4184b8|50|-2 535,0,0,0,0,0,0,0,0,1,0,0,0,0,0,536,
+scooby_state_4185f1|37|9 6,1,0,0,0,0,0,0,0,0,0,529,0,0,0,536,
+scooby_state_4184b8|51|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|4|0 533,0,0,1,0,0,2,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|53|-2 535,0,0,1,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185c0|47|1 0,2,0,1,0,0,0,0,0,1,0,532,0,0,0,536,
+scooby_state_4184b8|41|8 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|30|-2 536,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185c0|30|1 0,0,0,1,0,0,0,0,1,0,0,534,0,0,0,536,
+scooby_state_4184b8|37|-2 535,0,0,0,0,0,0,0,1,0,0,0,0,0,0,536,
+scooby_state_4185c0|50|1 0,0,0,1,1,0,0,0,1,1,0,531,0,0,1,536,
+scooby_state_4184b8|40|8 534,0,0,0,0,0,0,0,0,0,0,1,1,0,0,536,
+scooby_state_4184b8|3|-2 535,0,0,0,0,0,0,1,0,0,0,0,0,0,0,536,
+scooby_state_4184b8|26|8 535,0,1,0,0,0,0,0,0,0,0,0,0,0,0,536,
+scooby_state_4185c0|27|1 0,0,0,0,1,0,0,0,0,1,0,532,1,0,0,535,
+scooby_state_4185c0|42|1 1,0,1,0,0,0,1,1,1,0,0,529,1,0,0,535,
+scooby_state_4185f1|36|9 6,0,0,0,0,0,0,0,1,0,0,528,0,0,0,535,
+scooby_state_4184b8|25|8 534,0,0,0,0,0,0,0,0,1,0,0,0,0,0,535,
+scooby_state_4184b8|49|-2 532,1,0,0,0,0,0,0,0,0,0,0,1,0,0,534,
+scooby_state_4185f1|16|10 0,0,0,1,0,0,0,1,0,0,1,531,0,0,0,534,
+scooby_state_4185f1|51|9 7,0,0,0,0,0,0,0,0,0,0,526,0,0,0,533,
+scooby_state_4184b8|17|7 509,0,0,1,0,0,0,0,0,0,0,0,1,0,0,511,
+scooby_state_4184b8|17|-2 471,0,0,0,0,0,0,0,0,0,0,0,0,1,0,472,
+scooby_state_4184b8|58|8 448,0,0,0,0,0,0,0,0,0,0,0,0,0,0,448,
+scooby_state_4184b8|39|8 448,0,0,0,0,0,0,0,0,0,0,0,0,0,0,448,
+scooby_state_4185f9|54|9 446,0,1,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|36|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|24|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|55|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|40|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|32|7 445,0,0,0,1,0,0,0,0,0,0,0,1,0,0,447,
+scooby_state_4184b8|38|7 446,0,0,0,0,0,0,0,0,0,0,0,0,1,0,447,
+scooby_state_4185f1|60|9 0,0,0,0,0,0,2,0,0,0,1,444,0,0,0,447,
+scooby_state_4185f9|60|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f1|31|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|33|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|33|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|6|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|24|9 446,0,0,0,0,0,0,0,0,0,1,0,0,0,0,447,
+scooby_state_4185f9|38|1 446,0,0,0,0,0,0,0,0,0,0,0,0,1,0,447,
+scooby_state_4185f9|1|1 446,0,0,0,0,0,0,0,0,0,1,0,0,0,0,447,
+scooby_state_4184b8|63|7 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|56|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|3|0 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|50|1 445,0,0,0,1,0,0,0,0,1,0,0,0,0,0,447,
+scooby_state_4184b8|10|8 445,0,1,1,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|37|7 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|54|8 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|58|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|43|9 0,0,0,1,1,0,0,0,0,0,0,445,0,0,0,447,
+scooby_state_4185f9|12|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|58|9 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|26|1 446,0,0,0,0,0,0,0,0,0,0,0,0,1,0,447,
+scooby_state_4185f9|5|0 446,0,0,0,0,0,0,0,0,1,0,0,0,0,0,447,
+scooby_state_4185f9|29|9 446,0,0,0,0,0,0,0,0,0,0,0,0,0,1,447,
+scooby_state_4185c0|52|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|30|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|18|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|42|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|14|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|43|7 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f1|21|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|28|9 445,0,0,1,0,0,1,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|39|1 446,0,0,0,0,0,0,0,0,0,1,0,0,0,0,447,
+scooby_state_4184b8|34|8 446,0,0,0,0,0,1,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|23|9 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f1|22|1 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4184b8|29|8 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|0|0 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|31|1 446,0,0,0,1,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|49|9 446,0,0,0,0,0,0,1,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|28|7 446,0,0,0,0,1,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|19|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|57|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|45|1 445,0,0,1,0,0,0,1,0,0,0,0,0,0,0,447,
+scooby_state_4185f1|55|9 0,0,0,0,0,0,1,0,0,0,0,446,0,0,0,447,
+scooby_state_4185f9|9|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|18|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4184b8|27|7 446,0,0,0,0,0,1,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|14|9 446,0,0,0,0,0,0,1,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|57|7 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|47|7 446,1,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|49|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|2|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|41|1 446,0,0,0,0,0,0,0,1,0,0,0,0,0,0,447,
+scooby_state_4185f9|28|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|52|7 445,0,1,1,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|4|0 444,1,0,0,0,0,1,0,0,0,0,0,1,0,0,447,
+scooby_state_4185f9|23|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|5|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|19|8 446,0,0,0,0,0,0,0,1,0,0,0,0,0,0,447,
+scooby_state_4185c0|13|9 0,0,0,1,0,0,1,0,0,0,0,445,0,0,0,447,
+scooby_state_4185f9|54|1 446,0,0,0,0,0,0,0,1,0,0,0,0,0,0,447,
+scooby_state_4185f9|8|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|47|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185c0|38|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|63|9 446,0,0,0,0,0,0,0,0,1,0,0,0,0,0,447,
+scooby_state_4185c0|57|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4184b8|23|7 446,0,0,0,0,0,0,0,0,0,0,0,0,1,0,447,
+scooby_state_4185f1|11|9 0,0,0,0,0,0,0,0,0,0,0,447,0,0,0,447,
+scooby_state_4185f9|39|9 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|18|8 445,1,0,0,0,0,0,0,0,0,0,1,0,0,0,447,
+scooby_state_4184b8|20|8 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|52|1 446,0,0,0,0,0,0,0,0,0,0,1,0,0,0,447,
+scooby_state_4184b8|48|7 446,0,0,0,0,0,1,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|29|1 446,0,0,0,0,1,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|34|9 445,0,0,0,0,0,0,0,1,1,0,0,0,0,0,447,
+scooby_state_4185f9|21|1 445,0,1,1,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|59|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|34|1 446,0,1,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_418528|0|0 445,0,0,0,0,0,0,0,0,1,0,1,0,0,0,447,
+scooby_state_4185f9|4|1 446,0,0,0,0,0,0,0,0,0,0,0,1,0,0,447,
+scooby_state_4184b8|13|8 446,0,0,1,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|8|7 446,0,0,0,0,0,0,0,0,0,0,1,0,0,0,447,
+scooby_state_4185f9|9|9 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|43|1 446,0,0,0,0,0,0,0,0,0,0,1,0,0,0,447,
+scooby_state_4185f9|44|9 445,0,0,0,0,0,0,0,0,0,0,1,0,0,1,447,
+scooby_state_4185f9|48|1 444,1,0,0,1,0,0,0,0,0,0,0,1,0,0,447,
+scooby_state_4184b8|5|0 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|11|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185c0|62|9 0,0,0,1,0,0,0,0,0,0,0,446,0,0,0,447,
+scooby_state_4185f9|48|9 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|53|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|14|8 445,0,0,0,0,1,0,0,0,0,1,0,0,0,0,447,
+scooby_state_4185f9|3|1 446,0,0,0,0,1,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|16|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|33|7 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|59|9 445,1,0,0,0,0,0,1,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|51|1 446,0,1,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|59|8 446,0,0,0,0,0,0,0,1,0,0,0,0,0,0,447,
+scooby_state_4185f9|13|1 445,0,0,0,0,0,1,0,0,0,0,0,1,0,0,447,
+scooby_state_4185f9|61|1 445,0,0,0,0,2,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4185f9|46|1 447,0,0,0,0,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|24|8 446,0,0,0,1,0,0,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|22|7 446,0,0,0,0,0,1,0,0,0,0,0,0,0,0,447,
+scooby_state_4184b8|15|8 445,0,0,0,0,1,0,0,0,0,0,0,0,0,0,446,
+scooby_state_4185f9|17|1 446,0,0,0,0,0,0,0,0,0,0,0,0,0,0,446,
+scooby_state_4185c0|8|0 0,0,0,0,0,0,0,0,1,0,0,444,0,0,1,446,
+scooby_state_4185f9|53|9 446,0,0,0,0,0,0,0,0,0,0,0,0,0,0,446,
+scooby_state_4185f1|26|9 0,0,0,0,0,0,0,0,0,0,0,445,0,0,1,446,
+scooby_state_4185f9|44|1 445,0,0,1,0,0,0,0,0,0,0,0,0,0,0,446,
+scooby_state_4185f9|63|1 444,0,0,0,0,0,0,0,0,0,0,1,0,0,1,446,
+scooby_state_4185f9|62|1 446,0,0,0,0,0,0,0,0,0,0,0,0,0,0,446,
+scooby_state_4184b8|42|7 444,0,0,0,0,1,0,0,0,1,0,0,0,0,0,446,
+scooby_state_4185f9|7|2 444,0,0,1,0,0,0,0,0,0,0,0,0,0,0,445,
+scooby_state_418528|6|-1 445,0,0,0,0,0,0,0,0,0,0,0,0,0,0,445,
+scooby_state_4185f9|19|9 383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,383,
+scooby_state_417a06|36|0 172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,172,
+scooby_state_41130b|9|1 134,0,0,0,1,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_41130b|8|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|6|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_41130b|7|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|7|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_41130b|10|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|10|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|8|1 134,0,0,1,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_41130b|6|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|9|1 135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,
+scooby_state_411300|43|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|51|1 133,1,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|41|1 133,0,0,0,0,0,0,1,0,0,0,0,0,0,0,134,
+scooby_state_411300|45|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|41|1 133,0,0,0,0,0,0,0,1,0,0,0,0,0,0,134,
+scooby_state_411300|32|1 133,0,0,0,0,0,0,0,1,0,0,0,0,0,0,134,
+scooby_state_41130b|46|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|49|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|39|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|53|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|43|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|42|1 133,0,0,0,1,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|48|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|48|1 133,0,0,0,0,0,0,0,0,0,0,1,0,0,0,134,
+scooby_state_411300|51|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|37|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|47|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|58|1 133,0,1,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|4|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|47|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|38|1 133,0,0,0,0,1,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|57|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|60|1 133,0,0,0,1,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|25|1 133,0,0,0,0,0,0,0,0,0,0,1,0,0,0,134,
+scooby_state_411300|46|1 133,0,0,0,0,0,0,0,0,0,1,0,0,0,0,134,
+scooby_state_411300|44|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|54|1 132,1,0,0,0,0,0,0,0,0,1,0,0,0,0,134,
+scooby_state_411300|24|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|42|1 133,0,0,1,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|23|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|17|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|2|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|53|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|40|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|11|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|1|1 133,1,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|25|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|24|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|18|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|57|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|18|1 133,0,0,0,0,0,0,0,0,0,0,1,0,0,0,134,
+scooby_state_411300|52|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|21|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|21|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|26|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|61|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|19|1 133,0,0,0,0,0,1,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|50|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|32|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|5|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|15|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|36|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|54|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|36|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|15|1 132,0,0,0,0,0,0,0,0,0,0,1,0,1,0,134,
+scooby_state_411300|22|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|34|1 132,0,0,0,0,0,0,0,0,0,1,1,0,0,0,134,
+scooby_state_411300|34|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|33|1 133,0,0,0,0,0,0,1,0,0,0,0,0,0,0,134,
+scooby_state_41130b|45|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|62|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|27|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|31|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|26|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|30|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|30|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|29|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|28|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|22|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|28|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|55|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|52|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|16|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|23|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|27|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|11|1 133,0,0,0,0,0,1,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|44|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|20|1 133,0,0,0,0,1,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|14|1 133,0,0,0,0,0,0,0,0,0,0,1,0,0,0,134,
+scooby_state_41130b|37|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|5|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|2|1 133,0,0,0,0,0,0,0,1,0,0,0,0,0,0,134,
+scooby_state_411300|12|1 133,0,0,1,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|3|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|3|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|1|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|39|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|63|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|38|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|0|0 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|4|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|13|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|31|1 133,0,0,0,0,0,0,0,1,0,0,0,0,0,0,134,
+scooby_state_41130b|59|1 133,0,0,0,0,1,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|12|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|59|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|56|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|56|1 133,0,0,0,0,0,0,0,0,0,1,0,0,0,0,134,
+scooby_state_41130b|49|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|0|0 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|14|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|50|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|13|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|16|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|29|1 132,0,0,0,0,0,1,0,0,1,0,0,0,0,0,134,
+scooby_state_411300|33|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|40|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|35|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_411300|20|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|19|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|63|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|55|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|58|1 133,0,0,0,0,0,0,0,0,0,0,0,0,1,0,134,
+scooby_state_41130b|60|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|61|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|62|1 133,0,0,0,0,0,0,0,1,0,0,0,0,0,0,134,
+scooby_state_41130b|35|1 133,0,1,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_41130b|17|1 134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,134,
+scooby_state_418528|50|-1 91,0,0,0,0,0,0,0,0,0,0,0,0,0,0,91,
+scooby_state_4185f1|10|10 1,0,0,0,1,1,0,0,1,0,0,86,0,0,0,90,
+scooby_state_4185c0|56|10 0,1,0,0,0,0,1,0,0,5,1,82,0,0,0,90,
+scooby_state_4185c0|39|1 1,0,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185c0|35|2 1,0,1,0,0,1,0,0,1,0,0,86,0,0,0,90,
+scooby_state_4185c0|63|1 0,1,0,0,0,0,0,1,0,0,0,88,0,0,0,90,
+scooby_state_4185c0|44|1 0,0,1,0,0,0,0,1,0,0,0,88,0,0,0,90,
+scooby_state_4185c0|58|1 1,0,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185c0|57|1 1,0,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185f1|29|9 7,0,0,0,1,0,0,0,0,0,0,82,0,0,0,90,
+scooby_state_4185c0|14|1 1,0,0,0,0,1,0,0,0,0,1,87,0,0,0,90,
+scooby_state_4185c0|59|1 1,0,0,0,0,1,0,0,0,0,1,87,0,0,0,90,
+scooby_state_4185c0|13|1 1,0,0,0,0,1,0,0,0,0,1,87,0,0,0,90,
+scooby_state_4185c0|11|1 0,1,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185c0|12|10 1,0,0,0,0,1,0,0,0,5,0,83,0,0,0,90,
+scooby_state_4185c0|20|1 0,1,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185f1|48|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4184b8|37|8 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4185f1|49|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4184b8|8|-2 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4184b8|48|-2 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4184b8|57|8 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4185f1|30|10 1,0,0,0,1,0,0,0,1,0,1,86,0,0,0,90,
+scooby_state_4185f1|9|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185f1|47|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185c0|18|1 0,1,0,0,0,0,0,1,0,0,0,88,0,0,0,90,
+scooby_state_4184b8|28|-2 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4185d3|36|10 0,1,0,0,0,1,0,0,0,1,0,87,0,0,0,90,
+scooby_state_4185c0|5|1 1,0,1,0,0,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_4185f1|8|0 0,1,0,0,0,1,0,0,0,1,0,87,0,0,0,90,
+scooby_state_4185c0|62|1 0,0,1,0,0,0,0,1,0,0,0,88,0,0,0,90,
+scooby_state_4185f1|53|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185f1|21|10 1,0,0,0,1,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_4185c0|17|10 0,0,1,0,0,0,1,0,0,5,0,83,0,0,0,90,
+scooby_state_4185f1|4|0 1,0,0,0,1,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_4185f1|3|0 1,0,0,0,1,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_418528|34|-1 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4184b8|17|8 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4185c0|0|0 1,0,0,1,0,0,1,0,0,1,0,86,0,0,0,90,
+scooby_state_4185f1|54|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185c0|38|1 0,1,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185f1|23|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185c0|23|1 1,0,1,0,0,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_4184b8|42|8 90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,
+scooby_state_4185c0|50|10 1,0,0,0,0,1,0,0,0,5,0,83,0,0,0,90,
+scooby_state_4185f1|28|9 7,0,0,0,0,0,0,0,0,0,0,83,0,0,0,90,
+scooby_state_4185d3|31|10 1,0,0,0,1,0,0,0,1,0,0,87,0,0,0,90,
+scooby_state_4185f1|26|10 0,1,0,0,0,1,0,0,0,1,0,87,0,0,0,90,
+scooby_state_4185c0|19|1 0,1,0,0,0,0,1,0,0,0,0,88,0,0,0,90,
+scooby_state_4185f1|63|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185d3|16|10 0,1,0,0,0,1,0,0,0,2,0,85,0,0,0,89,
+scooby_state_4185f1|33|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185c0|24|1 0,0,1,0,0,0,0,1,0,0,0,87,0,0,0,89,
+scooby_state_4185f1|15|10 0,1,0,0,0,1,0,0,0,1,0,86,0,0,0,89,
+scooby_state_4185f1|0|0 0,0,0,1,0,0,0,1,0,0,2,85,0,0,0,89,
+scooby_state_4185c0|48|1 0,0,0,1,0,0,0,0,1,0,0,87,0,0,0,89,
+scooby_state_4185f1|34|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4184b8|47|8 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185c0|40|10 0,0,0,1,0,0,0,1,0,5,0,82,0,0,0,89,
+scooby_state_4184b8|13|-2 88,0,0,0,0,0,0,0,0,0,0,1,0,0,0,89,
+scooby_state_4185f1|13|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185f1|38|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185c0|51|2 0,1,0,0,1,0,0,1,0,0,1,85,0,0,0,89,
+scooby_state_4185f1|5|0 0,0,0,0,1,0,0,0,1,0,0,87,0,0,0,89,
+scooby_state_4185c0|46|2 1,0,0,1,0,0,1,0,0,1,0,85,0,0,0,89,
+scooby_state_4185c0|34|1 0,0,0,0,0,1,0,0,0,0,1,87,0,0,0,89,
+scooby_state_4185c0|25|1 0,0,1,0,0,0,0,1,0,0,0,87,0,0,0,89,
+scooby_state_4185c0|4|1 0,0,0,1,0,0,0,0,1,0,0,87,0,0,0,89,
+scooby_state_4184b8|52|8 88,0,0,0,0,0,0,0,0,0,1,0,0,0,0,89,
+scooby_state_4185f1|11|10 0,0,1,0,0,0,1,0,0,0,1,86,0,0,0,89,
+scooby_state_4184b8|18|-2 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185c0|35|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185c0|33|1 0,0,0,0,0,1,0,0,0,0,1,87,0,0,0,89,
+scooby_state_4185d3|26|10 0,0,0,1,0,0,0,1,0,0,0,87,0,0,0,89,
+scooby_state_4185c0|61|10 0,0,1,0,0,0,0,1,0,5,0,82,0,0,0,89,
+scooby_state_4185c0|8|1 1,0,0,0,1,0,0,0,0,1,0,86,0,0,0,89,
+scooby_state_4184b8|22|8 88,0,0,0,0,0,0,0,0,0,0,0,1,0,0,89,
+scooby_state_418528|45|-1 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185c0|10|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185f1|52|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185f1|18|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185c0|9|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185f1|58|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185f1|43|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185d3|21|10 0,0,1,0,0,0,1,0,0,0,1,86,0,0,0,89,
+scooby_state_4185f1|14|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185c0|28|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4184b8|27|8 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185c0|49|1 0,0,0,1,0,0,0,0,1,0,0,87,0,0,0,89,
+scooby_state_4185c0|1|0 0,1,0,0,1,0,0,1,0,0,1,85,0,0,0,89,
+scooby_state_4184b8|38|-2 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185f1|39|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185f1|59|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185c0|29|1 0,0,0,1,0,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185c0|43|1 0,0,1,0,0,0,0,1,0,0,0,87,0,0,0,89,
+scooby_state_4185f1|19|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185f1|20|10 0,0,1,0,0,0,1,0,0,0,1,86,0,0,0,89,
+scooby_state_4185f1|31|10 0,0,1,0,0,0,1,0,0,0,1,86,0,0,0,89,
+scooby_state_4185f1|60|10 0,0,0,1,0,0,0,1,0,0,0,87,0,0,0,89,
+scooby_state_4185f1|42|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185c0|55|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185c0|7|0 0,0,1,0,0,1,0,0,1,0,0,86,0,0,0,89,
+scooby_state_4185f1|57|9 7,0,0,0,0,0,0,0,0,0,0,82,0,0,0,89,
+scooby_state_4185c0|53|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185f1|24|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185c0|3|1 0,0,0,1,0,0,0,0,1,0,0,87,0,0,0,89,
+scooby_state_4185c0|55|10 0,1,0,0,0,0,1,0,0,4,1,82,0,0,0,89,
+scooby_state_4185c0|2|0 0,1,0,0,1,0,0,1,0,0,1,85,0,0,0,89,
+scooby_state_4185c0|15|1 0,0,0,0,0,1,0,0,0,0,1,87,0,0,0,89,
+scooby_state_4185c0|52|1 0,0,0,0,0,1,0,0,0,0,1,87,0,0,0,89,
+scooby_state_4184b8|23|-2 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4184b8|32|8 89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,
+scooby_state_4185f1|25|10 0,0,0,1,0,0,0,1,0,0,1,86,0,0,0,89,
+scooby_state_4185c0|54|1 0,0,0,0,1,0,0,0,0,1,0,87,0,0,0,89,
+scooby_state_4185f1|62|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185c0|6|1 0,0,0,0,0,1,0,0,0,0,1,87,0,0,0,89,
+scooby_state_4185f1|44|9 6,0,0,0,0,0,0,0,0,0,0,83,0,0,0,89,
+scooby_state_4185d3|41|10 0,0,1,0,0,0,1,0,0,0,1,85,0,0,0,88,
+scooby_state_4184b8|43|-2 87,0,0,0,0,0,0,0,0,0,0,0,1,0,0,88,
+scooby_state_4185c0|60|10 0,0,1,0,0,0,0,1,0,5,0,81,0,0,0,88,
+scooby_state_4185c0|45|10 0,0,0,0,1,0,0,0,1,5,0,81,0,0,0,88,
+scooby_state_4185f1|22|10 0,0,1,0,0,0,1,0,0,0,1,85,0,0,0,88,
+scooby_state_4185f9|19|2 64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,64,
+scooby_state_418528|18|-1 64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,64,
+scooby_state_4184b8|49|7 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4185f9|51|2 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4185f9|7|1 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+scooby_state_4185f1|16|9 0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,2,
+scooby_state_418528|59|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418528|44|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185f1|51|10 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_418528|54|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|45|2 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_417d00|52|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417a02|40|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417c75|18|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_411331|12|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417cf7|17|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4184c0|19|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417e41|57|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4112f9|8|3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417b41|45|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417bc0|47|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417a42|41|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_411300|5|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418528|41|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_41130b|5|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417c6c|49|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417dc3|55|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417e60|16|-3 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418540|21|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4112f9|11|-2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|55|2 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_418583|22|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417c32|48|-9 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|60|2 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_4185c0|42|2 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_418601|24|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418528|40|-1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|41|2 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_4185f1|36|10 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_417b83|46|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417d81|54|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417a82|42|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_411334|58|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4184b8|12|7 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417c70|36|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|22|10 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_417b01|44|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417d41|53|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_411343|13|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4179f0|39|-9 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_41135f|5|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417e00|56|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417ac0|43|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418502|20|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4184b0|18|6 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_418310|12|0 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_4185c0|27|10 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
+scooby_state_417d67|19|2 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417c82|50|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+scooby_state_417cc2|51|1 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+
+scooby_action_0_deg_dist 0,97,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_-6_deg_dist 0,85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_4_deg_dist 0,186,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_1_deg_dist 0,245732,129282,0,218579,0,77744,0,0,0,0,0,0,0,0,0,
+scooby_action_30_deg_dist 0,136667,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_5_deg_dist 0,172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_10_deg_dist 0,181,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_3_deg_dist 0,193,3,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_32_deg_dist 0,110,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_11_deg_dist 0,181,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_12_deg_dist 0,169,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_22_deg_dist 0,172,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_23_deg_dist 0,265,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_-1_deg_dist 0,27239,3755,0,83,0,0,0,0,0,0,0,0,0,0,0,
+scooby_action_-3_deg_dist 0,103,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+
+scooby_track_called 841001
+scooby_track_same_address 30460
+scooby_track_evict 810285
+
+scooby_reward_demand_called 841001
+scooby_reward_demand_pt_not_found 244177
+scooby_reward_demand_pt_found 596824
+scooby_reward_demand_pt_found_total 596824
+scooby_reward_demand_has_reward 0
+scooby_reward_train_called 141577
+scooby_reward_assign_reward_called 810491
+scooby_reward_no_pref 97
+scooby_reward_incorrect 141480
+scooby_reward_correct_untimely 346639
+scooby_reward_correct_timely 250185
+scooby_reward_out_of_bounds 72090
+scooby_reward_tracker_hit 0
+
+scooby_reward_none_low_bw 97
+scooby_reward_none_high_bw 0
+scooby_reward_incorrect_low_bw 141480
+scooby_reward_incorrect_high_bw 0
+scooby_reward_correct_untimely_low_bw 346639
+scooby_reward_correct_untimely_high_bw 0
+scooby_reward_correct_timely_low_bw 250185
+scooby_reward_correct_timely_high_bw 0
+scooby_reward_out_of_bounds_low_bw 72090
+scooby_reward_out_of_bounds_high_bw 0
+scooby_reward_tracker_hit_low_bw 0
+scooby_reward_tracker_hit_high_bw 0
+
+scooby_reward_1 0,136610,331022,178823,3308,0,
+scooby_reward_3 0,181,0,0,14,0,
+scooby_reward_4 0,164,0,0,22,0,
+scooby_reward_5 0,146,0,0,26,0,
+scooby_reward_10 0,132,0,31,19,0,
+scooby_reward_11 0,143,0,14,25,0,
+scooby_reward_12 0,145,0,0,25,0,
+scooby_reward_22 0,109,0,0,35,0,
+scooby_reward_23 0,107,0,0,25,0,
+scooby_reward_30 0,3478,0,64827,68351,0,
+scooby_reward_32 0,29,0,32,49,0,
+scooby_reward_-1 0,75,15617,6458,172,0,
+scooby_reward_-3 0,100,0,0,3,0,
+scooby_reward_-6 0,61,0,0,16,0,
+scooby_reward_0 97,0,0,0,0,0,
+
+scooby_train_called 810284
+scooby_train_compute_reward 141577
+
+scooby_register_fill_called 841994
+scooby_register_fill_set 322700
+scooby_register_fill_set_total 322700
+
+scooby_register_prefetch_hit_called 199990
+scooby_register_prefetch_hit_set 95257
+scooby_register_prefetch_hit_set_total 95257
+
+scooby_pref_issue_scooby 1736404
+
+learning_engine_featurewise.action.called 841001
+learning_engine_featurewise.action.explore 1529
+learning_engine_featurewise.action.exploit 839472
+learning_engine_featurewise.action.fallback 0
+learning_engine_featurewise.action.dyn_fallback_saved_bw 0
+learning_engine_featurewise.action.dyn_fallback_saved_bw_acc 231124
+learning_engine_featurewise.action.index_1_explored 97
+learning_engine_featurewise.action.index_1_exploited 671240
+learning_engine_featurewise.action.index_3_explored 112
+learning_engine_featurewise.action.index_3_exploited 84
+learning_engine_featurewise.action.index_4_explored 100
+learning_engine_featurewise.action.index_4_exploited 86
+learning_engine_featurewise.action.index_5_explored 102
+learning_engine_featurewise.action.index_5_exploited 70
+learning_engine_featurewise.action.index_10_explored 117
+learning_engine_featurewise.action.index_10_exploited 65
+learning_engine_featurewise.action.index_11_explored 98
+learning_engine_featurewise.action.index_11_exploited 84
+learning_engine_featurewise.action.index_12_explored 107
+learning_engine_featurewise.action.index_12_exploited 63
+learning_engine_featurewise.action.index_22_explored 106
+learning_engine_featurewise.action.index_22_exploited 66
+learning_engine_featurewise.action.index_23_explored 101
+learning_engine_featurewise.action.index_23_exploited 164
+learning_engine_featurewise.action.index_30_explored 112
+learning_engine_featurewise.action.index_30_exploited 136555
+learning_engine_featurewise.action.index_32_explored 86
+learning_engine_featurewise.action.index_32_exploited 24
+learning_engine_featurewise.action.index_-1_explored 106
+learning_engine_featurewise.action.index_-1_exploited 30971
+learning_engine_featurewise.action.index_-3_explored 103
+learning_engine_featurewise.action.index_-3_exploited 0
+learning_engine_featurewise.action.index_-6_explored 85
+learning_engine_featurewise.action.index_-6_exploited 0
+learning_engine_featurewise.action.index_0_explored 97
+learning_engine_featurewise.action.index_0_exploited 0
+learning_engine_featurewise.learn.called 810284
+learning_engine_featurewise.learn.su_skip_PC 0
+learning_engine_featurewise.learn.su_skip_PC_Delta 0
+
+learning_engine_featurewise.q_value_histogram.bucket_0 0
+learning_engine_featurewise.q_value_histogram.bucket_1 0
+learning_engine_featurewise.q_value_histogram.bucket_2 0
+learning_engine_featurewise.q_value_histogram.bucket_3 0
+learning_engine_featurewise.q_value_histogram.bucket_4 2308
+learning_engine_featurewise.q_value_histogram.bucket_5 38840
+learning_engine_featurewise.q_value_histogram.bucket_6 798324
+learning_engine_featurewise.q_value_histogram.bucket_7 0
+
+learning_engine_featurewise.consensus.total 839472
+learning_engine_featurewise.consensus.feature_align_PC 838890
+learning_engine_featurewise.consensus.feature_align_PC_ratio 1.00
+learning_engine_featurewise.consensus.feature_align_PC_Delta 838339
+learning_engine_featurewise.consensus.feature_align_PC_Delta_ratio 1.00
+learning_engine_featurewise.consensus.feature_align_all 837757
+learning_engine_featurewise.consensus.feature_align_all_ratio 1.00
+
+learning_engine_featurewise.feature_PC_min_weight 1000000.00000000
+learning_engine_featurewise.feature_PC_max_weight 0.00000000
+learning_engine_featurewise.feature_PC_Delta_min_weight 1000000.00000000
+learning_engine_featurewise.feature_PC_Delta_max_weight 0.00000000
+unique_pcs 51
+unique_pages 78592
+unique_trigger_pcs 17
+total_bitmaps_seen 0
+unique_bitmaps_seen 0
+
+scooby_bw_epochs 306659
+scooby_bw_level_0 88970
+scooby_bw_level_1 140396
+scooby_bw_level_2 53050
+scooby_bw_level_3 24243
+
+scooby_ipc_epochs 0
+scooby_ipc_level_0 0
+scooby_ipc_level_1 0
+scooby_ipc_level_2 0
+scooby_ipc_level_3 0
+
+scooby_cache_acc_epochs 70333
+scooby_cache_acc_level_0 1
+scooby_cache_acc_level_1 3223
+scooby_cache_acc_level_2 30200
+scooby_cache_acc_level_3 25343
+scooby_cache_acc_level_4 6143
+scooby_cache_acc_level_5 4763
+scooby_cache_acc_level_6 567
+scooby_cache_acc_level_7 70
+scooby_cache_acc_level_8 22
+scooby_cache_acc_level_9 1
+
+Channel_0_RQ_row_buffer_hit 291910
+Channel_0_RQ_row_buffer_miss 887639
+Channel_0_WQ_row_buffer_hit 105655
+Channel_0_WQ_row_buffer_miss 62543
+Channel_0_WQ_full 0
+Channel_0_dbus_congested 744350
+
+avg_congested_cycle 10
+
+DRAM_bw_pochs 306659
+DRAM_bw_level_0 88970
+DRAM_bw_level_1 140396
+DRAM_bw_level_2 53050
+DRAM_bw_level_3 24243
