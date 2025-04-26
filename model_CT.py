@@ -73,6 +73,81 @@ class MLP(nn.Module):
 
     def forward(self, input):
         return self.sigmoid(self.decoder(self.feature(input).view(-1, 50 * 8)))
+    
+# class PositionalEncoding(nn.Module):
+#     def __init__(self, d_model, max_len=5000):
+#         super(PositionalEncoding, self).__init__()
+#         pe = torch.zeros(max_len, d_model)
+#         position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+#         div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
+#         pe[:, 0::2] = torch.sin(position * div_term)
+#         pe[:, 1::2] = torch.cos(position * div_term)
+#         pe = pe.unsqueeze(0)
+#         self.register_buffer('pe', pe)
+
+#     def forward(self, x):
+#         return x + self.pe[:, :x.size(1), :]
+
+# d_model = int(os.environ.get('TRANSFORMER_D_MODEL', '128'))
+# nhead = int(os.environ.get('TRANSFORMER_NHEAD', '4'))
+# num_layers = int(os.environ.get('TRANSFORMER_NUM_LAYERS', '1'))
+# dim_feedforward = int(os.environ.get('TRANSFORMER_DIM_FEEDFORWARD', '512'))
+# dropout = float(os.environ.get('TRANSFORMER_DROPOUT', '0.1'))
+    
+# class Transformer(nn.Module):
+#     def __init__(self, input_dim=128, d_model=256, nhead=8, num_layers=2, dim_feedforward=1024, dropout=0.1):
+#         super(Transformer, self).__init__()
+        
+#         # Input embedding
+#         self.embedding = nn.Linear(input_dim, d_model)
+        
+#         # Positional encoding
+#         self.pos_encoder = PositionalEncoding(d_model)
+        
+#         # Transformer encoder layers
+#         encoder_layers = nn.TransformerEncoderLayer(d_model=d_model, nhead=nhead, 
+#                                                    dim_feedforward=dim_feedforward, 
+#                                                    dropout=dropout,
+#                                                    activation='relu')
+#         self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_layers=num_layers)
+        
+#         # Output layer
+#         self.decoder = nn.Linear(d_model, 128)
+#         self.sigmoid = nn.Sigmoid()
+        
+#         # Initialize parameters
+#         self._init_weights()
+        
+#     def _init_weights(self):
+#         for p in self.parameters():
+#             if p.dim() > 1:
+#                 nn.init.xavier_uniform_(p)
+                
+#     def forward(self, x):
+#         # Reshape input if needed (in case of batch processing)
+#         if x.dim() == 2:
+#             x = x.unsqueeze(1)  # Add sequence dimension
+            
+#         # Input embedding
+#         x = self.embedding(x)
+        
+#         # Add positional encoding
+#         x = self.pos_encoder(x)
+        
+#         # Pass through transformer encoder
+#         # Transpose for transformer: [batch, seq_len, features] -> [seq_len, batch, features]
+#         x = x.transpose(0, 1)
+#         x = self.transformer_encoder(x)
+#         # Transpose back: [seq_len, batch, features] -> [batch, seq_len, features]
+#         x = x.transpose(0, 1)
+        
+#         # Take the representation of the first token
+#         x = x[:, 0, :]
+        
+#         # Pass through decoder and sigmoid
+#         x = self.sigmoid(self.decoder(x))
+        
+#         return x
 
 class MLPrefetchModel(object):
     '''
@@ -305,8 +380,10 @@ class TerribleMLModel(MLPrefetchModel):
     bucket = os.environ.get('BUCKET', 'ip')
     epochs = int(os.environ.get('EPOCHS', '30'))
     lr = float(os.environ.get('CNN_LR', '0.002'))
+    threshold = float(os.environ.get('CNN_THRESHOLD', '0.5'))
     window = history + lookahead + k
     filter_window = lookahead * degree
+
     next_page_table = defaultdict(dict)
     batch_size = 256
 
@@ -405,33 +482,69 @@ class TerribleMLModel(MLPrefetchModel):
             print('Epoch : ', epoch + 1, '\t', 'loss :', sum(losses))
 
     def generate(self, data):
+        '''
+        Generate prefetches based on history ONLY when the FIRST cache miss
+        occurs for a given instruction ID AND the confidence of the top
+        prediction meets the threshold. Predicts self.k prefetches.
+        '''
         self.model.eval()
         prefetches = []
         accs = []
+        miss_instr_ids = set()  
+        for instr_id, _, _, _, llc_hit in data:
+            if not llc_hit:  # This is a miss
+                miss_instr_ids.add(instr_id)
+
+        prefetched_on_miss_ids = set()
+
         order = {i: line[0] for i, line in enumerate(data)}
         reverse_order = {v: k for k, v in order.items()}
-        for i, (instr_ids, pages, next_pages, x, y) in enumerate(self.batch(data)):
-            # breakpoint()
-            pages = torch.LongTensor(pages).to(x.device)
-            next_pages = torch.LongTensor(next_pages).to(x.device)
-            instr_ids = torch.LongTensor(instr_ids).to(x.device)
-            y_preds = self.model(x)
+
+        for i, (batch_instr_ids, batch_pages, batch_next_pages, x, y) in enumerate(self.batch(data)):
+            if not batch_instr_ids:
+                continue
+
+            with torch.no_grad():
+                 y_preds = self.model(x) # Output scores are between 0 and 1
+
             accs.append(float(self.accuracy(y_preds, y)))
-            topk = torch.topk(y_preds, self.degree).indices
-            shape = (topk.shape[0] * self.degree,)
-            topk = topk.reshape(shape)
-            pages = torch.repeat_interleave(pages, self.degree)
-            next_pages = torch.repeat_interleave(next_pages, self.degree)
-            instr_ids = torch.repeat_interleave(instr_ids, self.degree)
-            addresses = (topk < 64) * (pages << 12) + (topk >= 64) * ((next_pages << 12) - (64 << 6)) + (topk << 6)
-            #addresses = (pages << 12) + (topk << 6)
-            prefetches.extend(zip(map(int, instr_ids), map(int, addresses)))
-            if i % 100 == 0:
-                print('Chunk', i, 'Accuracy', sum(accs) / len(accs))
+
+            for j in range(len(batch_instr_ids)):
+                instr_id = int(batch_instr_ids[j])
+
+                if instr_id in miss_instr_ids and instr_id not in prefetched_on_miss_ids:
+                    item_preds = y_preds[j]
+
+                    # Get the top k predictions AND their confidence scores
+                    topk_results = torch.topk(item_preds, self.k)
+                    topk_confidences = topk_results.values
+                    topk_indices = topk_results.indices
+
+                    # Check if the confidence of the TOP prediction meets the threshold
+                    if topk_confidences[0] >= self.threshold: # <<< Confidence Check
+                        # Confidence is high enough, proceed to generate prefetches
+                        page = int(batch_pages[j])
+                        next_page = int(batch_next_pages[j])
+
+                        for k_idx in range(self.k): # Generate all k prefetches if confidence is good
+                            pred_block_offset = int(topk_indices[k_idx])
+                            if pred_block_offset < 64:
+                                pf_addr = (page << 12) + (pred_block_offset << 6)
+                            else:
+                                relative_block_offset = pred_block_offset - 64
+                                pf_addr = (next_page << 12) + (relative_block_offset << 6)
+                            prefetches.append((instr_id, pf_addr))
+
+                        # Mark this ID as prefetched only if confidence was met and prefetches generated
+                        prefetched_on_miss_ids.add(instr_id) # <<< Add ID to tracking set
+
+            if i % 100 == 0 and accs:
+                print(f'Chunk {i}, Current Avg Accuracy: {sum(accs) / len(accs):.4f}')
+
         prefetches = sorted([(reverse_order[iid], iid, addr) for iid, addr in prefetches])
         prefetches = [(iid, addr) for _, iid, addr in prefetches]
         return prefetches
-
+    
     def represent(self, addresses, first_page, box=True):
         blocks = [(address >> 6) % 64 for address in addresses]
         pages = [(address >> 12) for address in addresses]
@@ -445,91 +558,7 @@ class TerribleMLModel(MLPrefetchModel):
             return [raw]
         else:
             return raw
-        
-# class Hybrid(MLPrefetchModel):
-
-#     prefetcher_classes = (BestOffset,
-#                           TerribleMLModel, )
-
-#     def __init__(self) -> None:
-#         super().__init__()
-#         self.prefetchers = [prefetcher_class() for prefetcher_class in self.prefetcher_classes]
-
-#     def load(self, path):
-#         pass
-
-#     def save(self, path):
-#         pass
-
-#     def train(self, data):
-#         for prefetcher in self.prefetchers:
-#             prefetcher.train(data)
-
-#     def generate(self, data):
-#         prefetch_sets = defaultdict(lambda: defaultdict(list))
-#         for p, prefetcher in enumerate(self.prefetchers):
-#             prefetches = prefetcher.generate(data)
-#             for iid, addr in prefetches:
-#                 prefetch_sets[p][iid].append((iid, addr))
-#         total_prefetches = []
-
-#         for i, (instr_id, cycle_count, load_addr, load_ip, llc_hit) in enumerate(data):
-
-#             instr_prefetches = []
-#             for d in range(2):
-#                 for p in range(len(self.prefetchers)):
-#                     if prefetch_sets[p][instr_id]:
-#                         instr_prefetches.append(prefetch_sets[p][instr_id].pop(0))
-#             instr_prefetches = instr_prefetches[:2]
-#             total_prefetches.extend(instr_prefetches)
-#         return total_prefetches
-
-class LSTMModel(nn.Module):
-    def __init__(self, input_size=128, hidden_size=256, num_layers=2, dropout=0.2):
-        super().__init__()
-        self.input_size = input_size
-        self.hidden_size = hidden_size
-        self.num_layers = num_layers
-        self.dropout = dropout
-        
-        # LSTM requires 3D input: [batch_size, seq_len, features]
-        # In TerribleMLModel batch(), x comes as [batch_size, 1, 128]
-        self.lstm_layers = nn.LSTM(
-            input_size=input_size,
-            hidden_size=hidden_size,
-            num_layers=num_layers,
-            batch_first=True,
-            dropout=dropout if num_layers > 1 else 0
-        )
-        
-        # Single linear layer to predict all 128 cache lines directly
-        self.cache_line_predictor = nn.Linear(
-            hidden_size,
-            128  # 128 cache lines (64 per page × 2 pages)
-        )
-        self.sigmoid = nn.Sigmoid()  # To get 0-1 probability for each line
-        
-    def forward(self, x):
-        # TerribleMLModel provides x as [batch_size, 1, 128] 
-        # where the middle dimension is not really a sequence but a wrapper
-        # We need to reshape it to a proper sequence
-        
-        # For compatibility, reshape to [batch_size, seq_len, features]
-        # if x comes as [batch_size, feature_count]
-        if len(x.shape) == 2:
-            # Reshape to add sequence dimension
-            x = x.unsqueeze(1)  # Now shape is [batch_size, 1, features]
-        
-        # Process through LSTM
-        lstm_out, _ = self.lstm_layers(x)
-        
-        # Take output from the last time step
-        output = lstm_out[:, -1, :]
-        
-        # Direct prediction of all cache line probabilities
-        cache_line_probs = self.sigmoid(self.cache_line_predictor(output))
-        return cache_line_probs
-    
+            
 class Hybrid(MLPrefetchModel):
     prefetcher_classes = (BestOffset, TerribleMLModel)
 
@@ -559,7 +588,7 @@ class Hybrid(MLPrefetchModel):
         
         # Train BO on all data (unchanged)
         self.prefetchers[0].train(data)
-        
+
         # Train TerribleMLModel only on non-sequential data
         non_sequential_data = self._filter_non_sequential_data(data)
         if non_sequential_data:
@@ -593,60 +622,23 @@ class Hybrid(MLPrefetchModel):
 
     def generate(self, data):
         prefetch_sets = defaultdict(lambda: defaultdict(list))
-        
-        # Classify new instruction pointers encountered during generation
-        for i, (instr_id, cycle_count, load_addr, load_ip, llc_hit) in enumerate(data):
-            if load_ip not in self.ip_classifications and not llc_hit:
-                self.ip_patterns[load_ip].append(load_addr)
-                if len(self.ip_patterns[load_ip]) >= 3:
-                    self.ip_classifications[load_ip] = self.pattern_classifier.classify(self.ip_patterns[load_ip])
-
-        # Always use BestOffset
-        bo_prefetches = self.prefetchers[0].generate(data)
-        for iid, addr in bo_prefetches:
-            prefetch_sets[0][iid].append((iid, addr))
-            
-        # Filter out sequential patterns for TerribleMLModel
-        non_sequential_data = self._filter_non_sequential_data(data)
-        if non_sequential_data:
-            ml_prefetches = self.prefetchers[1].generate(non_sequential_data)
-            for iid, addr in ml_prefetches:
-                prefetch_sets[1][iid].append((iid, addr))
-
+        for p, prefetcher in enumerate(self.prefetchers):
+            prefetches = prefetcher.generate(data)
+            for iid, addr in prefetches:
+                prefetch_sets[p][iid].append((iid, addr))
         total_prefetches = []
-        # Generate up to 2 prefetches per instruction ID
+
         for i, (instr_id, cycle_count, load_addr, load_ip, llc_hit) in enumerate(data):
             instr_prefetches = []
-            
-            # For non-sequential patterns, consider both prefetchers
-            classification = self.ip_classifications.get(load_ip, 1)  # Default to non-sequential if not classified
-            # if classification == 1:
-            #     # Alternating strategy between BO and ML prefetches for non-sequential patterns
-            #     for d in range(2):
-            #         for p in range(len(self.prefetchers)):
-            #             if prefetch_sets[p][instr_id]:
-            #                 instr_prefetches.append(prefetch_sets[p][instr_id].pop(0))
-            # else:
-            #     # For sequential patterns, use only BO prefetches
-            #     while len(instr_prefetches) < 2 and prefetch_sets[0][instr_id]:
-            #         instr_prefetches.append(prefetch_sets[0][instr_id].pop(0))
 
-            # If classification is 1 (Non-Sequential)
-            if classification == 1:
-                # Pull up to 2 prefetches ONLY from ML model (prefetch_sets[1])
-                while len(instr_prefetches) < 2 and prefetch_sets[1][instr_id]:
-                     instr_prefetches.append(prefetch_sets[1][instr_id].pop(0))
-            # If classification is 0 (Sequential)
-            else:
-                # Pull up to 2 prefetches ONLY from BO model (prefetch_sets)
-                while len(instr_prefetches) < 2 and prefetch_sets[instr_id]:
-                    instr_prefetches.append(prefetch_sets[instr_id].pop(0))
-
-            # Limit to 2 prefetches per instruction ID
+            for d in range(2):
+                for p in range(len(self.prefetchers)):
+                    if prefetch_sets[p][instr_id]:
+                        instr_prefetches.append(prefetch_sets[p][instr_id].pop(0))
             instr_prefetches = instr_prefetches[:2]
             total_prefetches.extend(instr_prefetches)
-            
         return total_prefetches
+
 
 class AccessPatternClassifier(MLPrefetchModel):
 
@@ -672,7 +664,8 @@ class AccessPatternClassifier(MLPrefetchModel):
         """
         # Too short to classify
         if len(address_sequence) < 3:
-            return 1  # default to non-sequential
+            return 0
+            # return 1  # default to non-sequential
         
         block_addresses = [addr >> 6 for addr in address_sequence]
 
