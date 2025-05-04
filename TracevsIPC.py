@@ -25,7 +25,7 @@ group_spacing = 0.8           # 不同trace组之间的间距
 # --- 图表尺寸和布局参数 ---
 figure_width = 12             # 图表宽度 (英寸)
 figure_height = 8             # 图表高度 (英寸)
-rotate_x_labels = 0           # X轴标签旋转角度
+rotate_x_labels = 45           # X轴标签旋转角度
 
 # --- 颜色映射设置 ---
 # 创建与目标图像匹配的自定义颜色列表
@@ -191,7 +191,7 @@ for i, x_cat in enumerate(x_categories):
 
 # 设置X轴刻度和标签位置
 ax.set_xticks(x_positions)
-ax.set_xticklabels(x_categories, rotation=rotate_x_labels, ha='center', fontsize=12)
+ax.set_xticklabels(x_categories, rotation=rotate_x_labels, ha='right', fontsize=12)
 
 # 5. 添加图表元素和样式
 ax.set_ylabel(y_axis_label, fontsize=14, fontweight='bold')

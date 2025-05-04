@@ -25,7 +25,7 @@ group_spacing = 0.8           # 不同trace组之间的间距
 # --- 图表尺寸和布局参数 ---
 figure_width = 12             # 图表宽度 (英寸)
 figure_height = 8             # 图表高度 (英寸)
-rotate_x_labels = 0           # X轴标签旋转角度
+rotate_x_labels = 45           # X轴标签旋转角度
 
 # --- 颜色映射设置 ---
 # 创建与目标图像匹配的自定义颜色列表
@@ -237,16 +237,16 @@ for i, x_cat in enumerate(x_categories):
         else:
             rect = ax.bar(bar_pos, value, bar_width, color=color, align='edge', edgecolor=color, linewidth=0)
         
-        # 添加柱子顶部百分比标签
-        percentage = value * 100  # 转换回百分比
-        ax.text(bar_pos + bar_width/2, value + 0.01, f'{percentage:.2f}%', 
-                ha='center', va='bottom', fontsize=8, rotation=60, color='black')
+        # # 添加柱子顶部百分比标签
+        # percentage = value * 100  # 转换回百分比
+        # ax.text(bar_pos + bar_width/2, value + 0.01, f'{percentage:.2f}%', 
+        #         ha='center', va='bottom', fontsize=8, rotation=45, color='transparent')
                 
         print(f"在位置 {bar_pos} 绘制 {x_cat} 的 {category} 柱子，值 = {value}")
 
 # 设置X轴刻度和标签位置
 ax.set_xticks(x_positions)
-ax.set_xticklabels(x_categories, rotation=rotate_x_labels, ha='center', fontsize=12)
+ax.set_xticklabels(x_categories, rotation=rotate_x_labels, ha='right', fontsize=12)
 
 # 5. 添加图表元素和样式
 ax.set_ylabel(y_axis_label, fontsize=14, fontweight='bold')
