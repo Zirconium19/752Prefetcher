@@ -11,7 +11,7 @@ grouping_col = 'Exp'          # 包含分组类别 (Prefetcher/Exp) 的列名
 value_col = 'LLC_prefetch_acc'  # 包含Y轴数值 (LLC_prefetch_acc) 的列名 - 已改为预取准确率
 
 # --- 图表样式配置 ---
-chart_title = 'Figure2'            # 图表标题
+chart_title = 'Figure 6: LLC Accuracy results for benchmarks'            # 图表标题
 y_axis_label = 'LLC Prefetch Accuracy'  # Y轴标签 - 已更新
 x_axis_label = 'Benchmarks'   # X轴标签
 y_axis_min = 0.0              # Y轴最小值

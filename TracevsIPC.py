@@ -8,14 +8,14 @@ csv_file_path = 'Peformance_100m.csv'  # 你的CSV文件路径
 # !!! 请再次仔细检查并确保这些列名与你的CSV文件中的列名完全一致 !!!
 x_axis_col = 'Trace'          # 包含X轴类别 (Trace) 的列名
 grouping_col = 'Exp'          # 包含分组类别 (Prefetcher/Exp) 的列名
-value_col = 'Core_0_IPC'      # 包含Y轴数值 (Core_0_IPC) 的列名
+value_col = 'Standardlized_IPC'      # 包含Y轴数值 (Core_0_IPC) 的列名
 
 # --- 图表样式配置 ---
-chart_title = 'Figure1'            # 图表标题
-y_axis_label = 'IPC'          # Y轴标签
+chart_title =  'Figure 5: Standardized IPC results for benchmarks'            # 图表标题
+y_axis_label = 'Standardized_IPC'          # Y轴标签
 x_axis_label = 'Benchmarks'   # X轴标签
 y_axis_min = 0.0              # Y轴最小值
-y_axis_max = 1.3              # Y轴最大值
+y_axis_max = 1.5              # Y轴最大值
 
 # --- 控制柱子间距的关键参数 ---
 bar_width = 0.15              # 每个柱子的固定宽度
